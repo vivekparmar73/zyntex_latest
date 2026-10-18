@@ -1,0 +1,150 @@
+/* ---------- Page transition curtain ---------- */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+  background: var(--green-700);
+  display: grid;
+  place-items: center;
+}
+.curtain--deep {
+  background: radial-gradient(ellipse at 50% 40%, var(--green-800), var(--green-950));
+}
+.curtain--out {
+  transform-origin: 50% 100%;
+}
+.curtain--in {
+  transform-origin: 50% 0%;
+}
+.curtain__mark {
+  width: 64px;
+  height: 64px;
+}
+
+/* ---------- Scroll progress ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 300;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--green-800), var(--green-400), var(--it-cyan));
+  pointer-events: none;
+}
+[dir='rtl'] .scroll-progress {
+  transform-origin: 100% 50%;
+}
+
+/* ---------- Cursor follower ---------- */
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 600;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  mix-blend-mode: difference;
+}
+.cursor-ring.is-visible,
+.cursor-dot.is-visible {
+  opacity: 1;
+}
+.cursor-ring {
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1.5px solid #fff;
+  transition: opacity 0.3s, width 0.35s var(--ease), height 0.35s var(--ease), margin 0.35s var(--ease), background 0.35s;
+}
+.cursor-ring.is-hover {
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+}
+
+/* ---------- Apparel marquee ---------- */
+.marquee {
+  overflow: hidden;
+  padding-block: clamp(20px, 3vw, 34px);
+  border-block: 1px solid var(--line);
+  background: #fff;
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+.marquee__track > span {
+  display: flex;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding-inline-end: clamp(20px, 3vw, 40px);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.6vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.marquee__item:nth-child(2n) {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--green-700);
+}
+.marquee__item i {
+  font-style: normal;
+  font-size: 0.45em;
+  color: var(--green-600);
+  -webkit-text-stroke: 0;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+[dir='rtl'] .marquee__track {
+  animation-direction: reverse;
+}
+
+/* ---------- Footer wordmark ---------- */
+.footer__wordmark {
+  position: relative;
+  margin: 0;
+  padding-top: 24px;
+  overflow: hidden;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 19vw, 17rem);
+  line-height: 0.82;
+  letter-spacing: 0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(79, 179, 131, 0.35), transparent 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  user-select: none;
+}
+
+.route-loading {
+  min-height: 100vh;
+  background: var(--it-bg);
+}
