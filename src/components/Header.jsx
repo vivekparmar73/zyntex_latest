@@ -33,7 +33,7 @@ export const navGroups = [
 function Dropdown({ group, open, onOpen, onClose }) {
   const { t } = useLanguage();
   const { pathname } = useLocation();
-  const active = group.items.some((i) => i.to.split('#')[0] === pathname && !i.to.includes('#'));
+  const active = group.items.some((i) => i.to === pathname);
   return (
     <li
       className="nav__item"
@@ -73,7 +73,7 @@ function Dropdown({ group, open, onOpen, onClose }) {
   );
 }
 
-export default function Header({ home = routes.apparel, tone = 'light' }) {
+export default function Header({ home = routes.home, tone = 'light' }) {
   const { t } = useLanguage();
   const lenis = useLenis();
   const location = useLocation();
@@ -217,9 +217,6 @@ export default function Header({ home = routes.apparel, tone = 'light' }) {
               <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }}>
                 <Link to={routes.contact} className="mobile-menu__heading">
                   {t('nav.contact')}
-                </Link>
-                <Link to={routes.divisions} className="mobile-menu__sub">
-                  ← {t('nav.divisions')}
                 </Link>
               </motion.div>
               <motion.div className="mobile-menu__lang" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>

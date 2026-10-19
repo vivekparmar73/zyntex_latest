@@ -82,10 +82,10 @@ export default function Manufacturing() {
       </section>
 
       {/* Section 4 */}
-      <section className="section section--dark" aria-labelledby="mf-4">
+      <section className="section" aria-labelledby="mf-4">
         <div className="container">
           <div className="split">
-            <SplitHeading id="mf-4" as="h2" className="title-lg" text="High-tech apparel manufacturing through tech and talent" />
+            <SplitHeading id="mf-4" as="h2" className="title-lg title-green" text="High-tech apparel manufacturing through tech and talent" />
             <Reveal delay={0.1} className="lead">
               <p>
                 At Zyntex, we combine advanced technology with skilled craftsmanship to deliver scalable, high-quality apparel manufacturing that
@@ -97,15 +97,12 @@ export default function Manufacturing() {
                 market trends and customer expectations. From denim and sportswear to contemporary apparel, Zyntex is committed to building a more
                 efficient, responsible, and future-ready approach to fashion manufacturing.
               </p>
-              <Link to={routes.opex} className="btn btn--light">
+              <Link to={routes.opex} className="btn btn--ghost">
                 {t('nav.opex')} <ArrowRight />
               </Link>
             </Reveal>
           </div>
-          <div className="mf-gallery">
-            <ParallaxImage image={images.making1111} ratio="16 / 10" sizes="(max-width: 900px) 100vw, 60vw" strength={30} />
-            <ParallaxImage image={images.making1} ratio="3 / 4" sizes="(max-width: 900px) 100vw, 40vw" strength={50} />
-          </div>
+          <ParallaxImage image={images.making1111} ratio="2171 / 724" className="mf-wide" sizes="(max-width: 1440px) 100vw, 1440px" strength={30} />
         </div>
       </section>
     </Page>

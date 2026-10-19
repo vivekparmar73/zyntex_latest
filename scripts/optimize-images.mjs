@@ -45,6 +45,16 @@ const webp = { quality: 80, effort: 5 };
 async function run() {
   await mkdir(path.join(OUT, 'team'), { recursive: true });
   await mkdir(path.join(OUT, 'products'), { recursive: true });
+  await mkdir(path.join(OUT, 'brand'), { recursive: true });
+
+  // Logos keep their transparency (lossless WebP)
+  for (const name of ['zyntex-wordmark-green', 'zyntex-wordmark-white', 'zyntex-monogram-green', 'zyntex-monogram-white']) {
+    await sharp(path.join(SRC, 'brand', `${name}.png`))
+      .resize({ width: 640, withoutEnlargement: true })
+      .webp({ lossless: true, effort: 6 })
+      .toFile(path.join(OUT, 'brand', `${name}.webp`));
+    console.log('✓', name);
+  }
 
   for (const [file, name] of Object.entries(wide)) {
     const input = path.join(SRC, file);

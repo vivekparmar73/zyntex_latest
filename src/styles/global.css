@@ -27,9 +27,18 @@
   --font-display: 'Montserrat Variable', 'Montserrat', 'Noto Sans', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Inter Variable', 'Inter', 'Noto Sans', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
 
-  --header-h: 84px;
-  --gutter: clamp(16px, 4vw, 56px);
-  --maxw: 1320px;
+  /* Type scale — one place to tune sizes site-wide */
+  --fs-body: 1rem;
+  --fs-small: 0.9375rem;
+  --fs-lead: clamp(1rem, 0.35vw + 0.92rem, 1.125rem);
+  --fs-h1: clamp(2rem, 4.6vw, 4.25rem);
+  --fs-h2: clamp(1.5rem, 2.6vw, 2.35rem);
+  --fs-h3: clamp(1.1rem, 1.5vw, 1.35rem);
+  --fs-banner: clamp(2rem, 5vw, 4.25rem);
+
+  --header-h: 80px;
+  --gutter: clamp(16px, 4vw, 64px);
+  --maxw: 1440px;
   --radius: 18px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow-lg: 0 30px 60px -20px rgba(10, 30, 20, 0.25);
@@ -51,8 +60,12 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  /* content protection: discourage casual copying (form fields re-enable selection) */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -62,6 +75,14 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  -webkit-user-drag: none;
+}
+input,
+textarea,
+select,
+[contenteditable='true'] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 a {
@@ -130,10 +151,10 @@ p:last-child {
 }
 
 .section {
-  padding-block: clamp(72px, 10vw, 140px);
+  padding-block: clamp(64px, 8vw, 120px);
 }
 .section--tight {
-  padding-block: clamp(48px, 7vw, 96px);
+  padding-block: clamp(44px, 6vw, 80px);
 }
 .section--mist {
   background: var(--mist);
@@ -169,22 +190,22 @@ p:last-child {
   hyphens: auto;
 }
 .title-xl {
-  font-size: clamp(2.3rem, 6.4vw, 5.6rem);
-  line-height: 1.02;
+  font-size: var(--fs-h1);
+  line-height: 1.04;
   font-weight: 800;
 }
 .title-lg {
-  font-size: clamp(1.7rem, 3.6vw, 3rem);
+  font-size: var(--fs-h2);
 }
 .title-md {
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-size: var(--fs-h3);
 }
 .title-green {
   color: var(--green-700);
 }
 
 .lead {
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-size: var(--fs-lead);
   color: var(--graphite-2);
 }
 .muted {
@@ -197,11 +218,11 @@ p:last-child {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 28px;
+  padding: 14px 26px;
   border-radius: 999px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   overflow: hidden;

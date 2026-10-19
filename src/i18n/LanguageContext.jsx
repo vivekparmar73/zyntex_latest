@@ -4,33 +4,36 @@ import { languages, translations } from './translations';
 const STORAGE_KEY = 'zyntex-lang';
 const LanguageContext = createContext(null);
 
-function initialLanguage() {
+const byId = Object.fromEntries(languages.map((l) => [l.id, l]));
+const dictOf = (option) => translations[option.dict || option.lang] || translations.en;
+
+function initialOption() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved && translations[saved]) return saved;
+    if (saved && byId[saved]) return saved;
   } catch {
     /* storage unavailable */
   }
   const browser = (navigator.language || 'en').slice(0, 2);
-  return translations[browser] ? browser : 'en';
+  return byId[browser] ? browser : 'en';
 }
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(initialLanguage);
+  const [id, setLang] = useState(initialOption);
+  const option = byId[id] || byId.en;
 
   useEffect(() => {
-    const meta = languages.find((l) => l.code === lang);
-    document.documentElement.lang = lang;
-    document.documentElement.dir = meta?.dir || 'ltr';
+    document.documentElement.lang = option.lang;
+    document.documentElement.dir = option.dir || 'ltr';
     try {
-      localStorage.setItem(STORAGE_KEY, lang);
+      localStorage.setItem(STORAGE_KEY, option.id);
     } catch {
       /* storage unavailable */
     }
-  }, [lang]);
+  }, [option]);
 
-  const t = useCallback((key) => translations[lang]?.[key] ?? translations.en[key] ?? key, [lang]);
-  const value = useMemo(() => ({ lang, setLang, t }), [lang, t]);
+  const t = useCallback((key) => dictOf(option)[key] ?? translations.en[key] ?? key, [option]);
+  const value = useMemo(() => ({ lang: option.id, option, setLang, t }), [option, t]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

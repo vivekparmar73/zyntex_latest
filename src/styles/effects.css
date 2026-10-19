@@ -18,8 +18,8 @@
   transform-origin: 50% 0%;
 }
 .curtain__mark {
-  width: 64px;
-  height: 64px;
+  width: auto;
+  height: 76px;
 }
 
 /* ---------- Scroll progress ---------- */
@@ -31,7 +31,7 @@
   height: 3px;
   z-index: 300;
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--green-800), var(--green-400), var(--it-cyan));
+  background: linear-gradient(90deg, var(--green-800), var(--green-400));
   pointer-events: none;
 }
 [dir='rtl'] .scroll-progress {
@@ -144,7 +144,3 @@
   user-select: none;
 }
 
-.route-loading {
-  min-height: 100vh;
-  background: var(--it-bg);
-}

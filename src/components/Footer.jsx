@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import MapEmbed from './MapEmbed';
-import { LinkedInIcon, MailIcon, PhoneIcon, PinIcon } from './Icons';
+import { LinkedInIcon, MailIcon, PhoneIcon } from './Icons';
 import { useLanguage } from '../i18n/LanguageContext';
-import { contact, legalEntity, mapLinks, routes } from '../data/site';
+import { contact, legalEntity, routes } from '../data/site';
 
-const links = [
+const quickLinks = [
+  ['common.contactUs', routes.contact],
+  ['nav.sitemap', routes.sitemap],
+  ['nav.privacy', routes.privacy],
+];
+
+const exploreLinks = [
   ['nav.aboutUs', routes.about],
   ['nav.leadership', routes.leadership],
   ['nav.ourJourney', routes.journey],
@@ -13,7 +19,6 @@ const links = [
   ['nav.products', routes.products],
   ['nav.manufacturing', routes.manufacturing],
   ['nav.opex', routes.opex],
-  ['nav.contact', routes.contact],
 ];
 
 export default function Footer() {
@@ -24,7 +29,7 @@ export default function Footer() {
       <div className="footer__glow" aria-hidden="true" />
       <div className="container footer__grid">
         <div className="footer__brand">
-          <Link to={routes.divisions} aria-label="Zyntex — choose a division">
+          <Link to={routes.home} aria-label="Zyntex home">
             <Logo tone="light" />
           </Link>
           <p>
@@ -33,12 +38,22 @@ export default function Footer() {
           <a className="footer__social" href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Zyntex on LinkedIn">
             <LinkedInIcon size={18} />
           </a>
+          <ul className="footer__contact">
+            <li>
+              <MailIcon size={16} />
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </li>
+            <li>
+              <PhoneIcon size={16} />
+              <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
+            </li>
+          </ul>
         </div>
 
-        <nav className="footer__col" aria-label="Footer">
-          <h2 className="footer__heading">{t('footer.explore')}</h2>
+        <nav className="footer__col" aria-label={t('footer.quickLinks')}>
+          <h2 className="footer__heading">{t('footer.quickLinks')}</h2>
           <ul className="footer__links">
-            {links.map(([key, to]) => (
+            {quickLinks.map(([key, to]) => (
               <li key={key}>
                 <Link to={to}>{t(key)}</Link>
               </li>
@@ -47,34 +62,30 @@ export default function Footer() {
         </nav>
 
         <div className="footer__col">
-          <h2 className="footer__heading">{t('footer.reach')}</h2>
-          <ul className="footer__contact">
-            <li>
-              <MailIcon size={18} />
-              <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            </li>
-            <li>
-              <PhoneIcon size={18} />
-              <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
-            </li>
-            <li>
-              <LinkedInIcon size={18} />
-              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-                linkedin.com/company/zyntex
-              </a>
-            </li>
-            <li>
-              <PinIcon size={18} />
-              <a href={mapLinks.open} target="_blank" rel="noopener noreferrer">
-                {contact.lat}° N, {contact.lng}° E
-              </a>
-            </li>
-          </ul>
+          <h2 className="footer__heading">{t('footer.social')}</h2>
+          <a className="footer__social-link" href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+            <span className="footer__social-icon">
+              <LinkedInIcon size={16} />
+            </span>
+            LinkedIn
+          </a>
         </div>
+
+        <nav className="footer__col" aria-label={t('footer.explore')}>
+          <h2 className="footer__heading">{t('footer.explore')}</h2>
+          <ul className="footer__links">
+            {exploreLinks.map(([key, to]) => (
+              <li key={key}>
+                <Link to={to}>{t(key)}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="footer__col footer__map">
           <h2 className="footer__heading">{t('footer.visit')}</h2>
           <MapEmbed height={190} />
+          <p className="footer__place">{contact.location}</p>
         </div>
       </div>
 
@@ -85,7 +96,6 @@ export default function Footer() {
         <p>
           © {year} Zyntex · {legalEntity}. {t('footer.rights')}
         </p>
-        <Link to={routes.divisions}>{t('nav.divisions')}</Link>
       </div>
     </footer>
   );

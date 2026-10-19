@@ -2,60 +2,65 @@ import Seo from '../components/Seo';
 import PageBanner from '../components/PageBanner';
 import ContactForm from '../components/ContactForm';
 import MapEmbed from '../components/MapEmbed';
-import { Page, Reveal, TiltCard } from '../components/Motion';
-import { ArrowUpRight, LinkedInIcon, MailIcon, PhoneIcon, PinIcon } from '../components/Icons';
+import { Page, Reveal } from '../components/Motion';
+import { LinkedInIcon, MailIcon, PhoneIcon, PinIcon, ProductsIcon } from '../components/Icons';
 import { useLanguage } from '../i18n/LanguageContext';
-import { contact, mapLinks, routes } from '../data/site';
+import { contact, legalEntity, mapLinks, routes } from '../data/site';
 
 export default function Contact() {
   const { t } = useLanguage();
-  const cards = [
+  const rows = [
+    { Icon: ProductsIcon, label: t('contact.company'), value: `Zyntex, a brand of ${legalEntity}` },
     { Icon: MailIcon, label: t('contact.email'), value: contact.email, href: `mailto:${contact.email}` },
     { Icon: PhoneIcon, label: t('contact.phone'), value: contact.phoneDisplay, href: contact.phoneHref },
     { Icon: LinkedInIcon, label: t('contact.linkedin'), value: 'linkedin.com/company/zyntex', href: contact.linkedin, external: true },
-    { Icon: PinIcon, label: t('contact.location'), value: `${contact.lat}° N, ${contact.lng}° E`, href: mapLinks.open, external: true },
+    { Icon: PinIcon, label: t('contact.location'), value: contact.location, href: mapLinks.open, external: true },
   ];
 
   return (
     <Page>
       <Seo
         title="Contact Us"
-        description="Contact Zyntex at info@zyntex.in or +91 78 630 24047 for apparel design, sampling, bulk manufacturing and partnership enquiries."
+        description="Contact Zyntex — a brand of Indoprimo Apparel Private Limited, Palsana, Surat, Gujarat — at info@zyntex.in or +91 78 630 24047."
         path={routes.contact}
       />
-      <PageBanner title={t('nav.contact')} />
+      <PageBanner title={t('contact.title')} solid />
 
-      <section className="section--tight" aria-label={t('contact.getInTouch')}>
-        <div className="container contact-cards">
-          {cards.map(({ Icon, label, value, href, external }, i) => (
-            <Reveal key={label} delay={i * 0.08}>
-              <TiltCard className="contact-card" max={8}>
-                <a href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                  <span className="contact-card__icon">
+      <section className="section contact" aria-labelledby="contact-title">
+        <div className="container contact__grid">
+          <Reveal className="contact__info">
+            <h2 id="contact-title" className="title-lg title-green">
+              {t('contact.title')}
+            </h2>
+            <h3 className="contact__office">{t('contact.corporateOffice')}</h3>
+            <ul className="contact__list">
+              {rows.map(({ Icon, label, value, href, external }) => (
+                <li key={label}>
+                  <span className="contact__icon">
                     <Icon />
                   </span>
-                  <span className="contact-card__label">{label}</span>
-                  <span className="contact-card__value">{value}</span>
-                  <span className="contact-card__go" aria-hidden="true">
-                    <ArrowUpRight size={18} />
+                  <span>
+                    <span className="contact__label">{label}</span>
+                    {href ? (
+                      <a className="contact__value" href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                        {value}
+                      </a>
+                    ) : (
+                      <span className="contact__value">{value}</span>
+                    )}
                   </span>
-                </a>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-      <section className="section contact-main" aria-labelledby="form-title">
-        <div className="container contact-main__grid">
-          <Reveal className="contact-main__form">
-            <span className="eyebrow">{t('contact.getInTouch')}</span>
-            <h2 id="form-title" className="title-lg title-green">
-              {t('contact.sendMessage')}
-            </h2>
+          <Reveal delay={0.12} className="contact__form">
             <ContactForm />
           </Reveal>
-          <Reveal delay={0.15} className="contact-main__map">
+        </div>
+
+        <div className="container">
+          <Reveal className="contact__map">
             <MapEmbed />
           </Reveal>
         </div>

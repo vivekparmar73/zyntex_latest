@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://zyntex.in/</loc></url>
-  <url><loc>https://zyntex.in/apparel/</loc></url>
+  <url><loc>https://zyntex.in/our-journey/</loc></url>
   <url><loc>https://zyntex.in/apparel-designer/</loc></url>
   <url><loc>https://zyntex.in/clothing-and-apparel-manufacturers/</loc></url>
   <url><loc>https://zyntex.in/products/</loc></url>
@@ -9,5 +9,6 @@
   <url><loc>https://zyntex.in/about-us/</loc></url>
   <url><loc>https://zyntex.in/leadership/</loc></url>
   <url><loc>https://zyntex.in/contact-us/</loc></url>
-  <url><loc>https://zyntex.in/integrated-systems/</loc></url>
+  <url><loc>https://zyntex.in/sitemap/</loc></url>
+  <url><loc>https://zyntex.in/privacy-policy/</loc></url>
 </urlset>

@@ -13,7 +13,7 @@ export default function NotFound() {
       <div className="container">
         <span className="not-found__code">404</span>
         <h1 className="title-lg">This page could not be found</h1>
-        <Link to={routes.apparel} className="btn btn--primary">
+        <Link to={routes.home} className="btn btn--primary">
           {t('division.apparel')} <ArrowRight />
         </Link>
       </div>

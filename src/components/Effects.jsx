@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring } from 'framer-motion';
+import monogram from '../assets/images/brand/zyntex-monogram-white.webp';
 
 const ease = [0.76, 0, 0.24, 1];
 
@@ -24,14 +25,7 @@ export function Curtain() {
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 1, transition: { duration: 0.55, delay: 0.08, ease } }}
       >
-        <motion.svg
-          className="curtain__mark"
-          viewBox="0 0 48 48"
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 1, transition: { delay: 0.3, duration: 0.25 } }}
-        >
-          <path d="M14 14h20L15 34h20" fill="none" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
-        </motion.svg>
+        <motion.img className="curtain__mark" src={monogram} alt="" initial={{ opacity: 0 }} exit={{ opacity: 1, transition: { delay: 0.3, duration: 0.25 } }} />
       </motion.div>
 
       <motion.div
@@ -40,14 +34,7 @@ export function Curtain() {
         initial={{ scaleY: 1 }}
         animate={{ scaleY: 0, transition: { duration: 0.7, delay: 0.05, ease } }}
       >
-        <motion.svg
-          className="curtain__mark"
-          viewBox="0 0 48 48"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0, transition: { duration: 0.2 } }}
-        >
-          <path d="M14 14h20L15 34h20" fill="none" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
-        </motion.svg>
+        <motion.img className="curtain__mark" src={monogram} alt="" initial={{ opacity: 1 }} animate={{ opacity: 0, transition: { duration: 0.2 } }} />
       </motion.div>
       <motion.div
         className="curtain curtain--in"

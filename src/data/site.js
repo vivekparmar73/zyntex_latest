@@ -5,8 +5,10 @@ export const contact = {
   phoneDisplay: '+91 78 630 24047',
   phoneHref: 'tel:+917863024047',
   linkedin: 'https://www.linkedin.com/company/zyntex/home/',
-  lat: 21.264903,
-  lng: 72.933053,
+  // TODO: Palsana town centre (OpenStreetMap). Replace with the exact facility coordinates once confirmed.
+  lat: 21.085941,
+  lng: 72.978046,
+  location: 'Palsana, Surat, Gujarat, India',
 };
 
 export const mapLinks = {
@@ -20,25 +22,33 @@ export const mapLinks = {
 
 export const legalEntity = 'Indoprimo Apparel Private Limited';
 
-// TODO: the brief gives 150+ (homepage) and 200+ (About Us). Reconcile before launch.
-export const workforce = { home: '150', about: '200' };
+export const workforce = '200';
 
-// TODO: confirm what "10+" counts (customer markets?) and what "1M+ annually" measures.
 export const stats = [
-  { value: 10, suffix: '+', labelKey: 'stats.countries' },
-  { value: 1, suffix: 'M+', labelKey: 'stats.annually' },
+  {
+    value: 1,
+    suffix: 'M+',
+    labelKey: 'stats.units',
+    text: 'With consistent annual production, we create fashion for some of the biggest names in the industry.',
+  },
+  {
+    value: 10,
+    suffix: '+',
+    labelKey: 'stats.countries',
+    text: 'We continue to expand our international presence, delivering quality apparel to markets around the world.',
+  },
 ];
 
-// Supplied photographs (resources/*.jpg). Roles were not supplied — TODO: add verified titles.
+// Photos are the supplied resources/<FirstName>.jpg files. `tbc` marks roles still to be confirmed.
 export const team = [
-  { name: 'Raaj', slug: 'raaj', role: null },
-  { name: 'Anchit', slug: 'anchit', role: null },
-  { name: 'Arvind', slug: 'arvind', role: null },
-  { name: 'Dhirubhai', slug: 'dhirubhai', role: null },
-  { name: 'Fareen', slug: 'fareen', role: null },
-  { name: 'Harsh', slug: 'harsh', role: null },
-  { name: 'Meet', slug: 'meet', role: null },
-  { name: 'Nandita', slug: 'nandita', role: null },
+  { name: 'Raaj Bhalala', slug: 'raaj', role: 'Founder & Director' },
+  { name: 'Harsh Bhalala', slug: 'harsh', role: 'Founder & Director' },
+  { name: 'Meet Paghadal', slug: 'meet', role: 'CEO, Sportswear' },
+  { name: 'Arvind Aiyar', slug: 'arvind', role: 'CEO, Causewear', tbc: true },
+  { name: 'Anchit Shukla', slug: 'anchit', role: 'CFO' },
+  { name: 'Farheen Kapadia', slug: 'fareen', role: 'COO', tbc: true },
+  { name: 'Nandita Patel', slug: 'nandita', role: 'Head of Design' },
+  { name: 'Dhirubhai Shekh', slug: 'dhirubhai', role: 'Partner', tbc: true },
 ];
 
 // Product shots cut from MAIN IMAGE - 1, in file order (product-01 … product-16).
@@ -76,9 +86,8 @@ export const productCategories = [
 ];
 
 export const routes = {
-  divisions: '/',
-  apparel: '/apparel/',
-  journey: '/apparel/#our-journey',
+  home: '/',
+  journey: '/our-journey/',
   design: '/apparel-designer/',
   products: '/products/',
   manufacturing: '/clothing-and-apparel-manufacturers/',
@@ -86,5 +95,6 @@ export const routes = {
   about: '/about-us/',
   leadership: '/leadership/',
   contact: '/contact-us/',
-  it: '/integrated-systems/',
+  sitemap: '/sitemap/',
+  privacy: '/privacy-policy/',
 };

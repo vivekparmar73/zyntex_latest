@@ -31,7 +31,7 @@ export default function AboutUs() {
           <SplitHeading id="about-title" as="h2" className="title-lg title-green" text="Threading the world of fashion" />
           <Reveal delay={0.1} className="lead">
             <p>
-              Founded by Mr. Raj Bhalala in 2021, Zyntex is a multinational clothing manufacturing company based in India, offering end-to-end
+              Founded by Mr. Raaj Bhalala in 2021, Zyntex is a multinational clothing manufacturing company based in India, offering end-to-end
               supply chain solutions to brands worldwide. We develop apparel for all ages, genders, and style preferences using sustainable
               practices.
             </p>
@@ -40,7 +40,7 @@ export default function AboutUs() {
               environment, we contribute to a circular economy that benefits everyone.
             </p>
             <p>
-              With 3+ garment manufacturing units and a workforce of over {workforce.about} employees, Zyntex continues to pursue innovation and
+              With 3+ garment manufacturing units and a workforce of over {workforce} employees, Zyntex continues to pursue innovation and
               responsible growth.
             </p>
           </Reveal>
@@ -76,7 +76,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="section section--dark" aria-labelledby="pillars-of-success">
+      <section className="section section--dark about-pillars" aria-labelledby="pillars-of-success">
         <div className="container">
           <Reveal className="section-head section-head--center">
             <span className="eyebrow">Zyntex</span>

@@ -83,6 +83,14 @@ export const ProductsIcon = () => (
   </svg>
 );
 
+export const OpexIcon = () => (
+  <svg viewBox="0 0 64 64" {...base} strokeWidth="1.6" aria-hidden="true">
+    <path d="M32 8v6M32 50v6M8 32h6M50 32h6M15 15l4.2 4.2M44.8 44.8 49 49M15 49l4.2-4.2M44.8 19.2 49 15" />
+    <circle cx="32" cy="32" r="16" />
+    <path d="m24.5 32.5 5 5 10-11" />
+  </svg>
+);
+
 /* Operational Excellence: globe-style circular line icons, all on the same 80×80 grid */
 const OpexFrame = ({ children }) => (
   <svg viewBox="0 0 80 80" {...base} strokeWidth="1.4" aria-hidden="true">

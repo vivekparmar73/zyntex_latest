@@ -5,7 +5,7 @@ import { ArrowRight } from './Icons';
 import { contact } from '../data/site';
 
 const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || `https://formsubmit.co/ajax/${contact.email}`;
-const SUBJECTS = ['s_general', 's_sampling', 's_bulk', 's_partnership', 's_careers', 's_it'];
+const SUBJECTS = ['s_general', 's_apparel', 's_product', 's_partnership', 's_it', 's_other'];
 const EMPTY = { name: '', company: '', email: '', phone: '', subject: '', message: '', website: '' };
 
 function validate(v) {
@@ -128,7 +128,7 @@ export default function ContactForm({ defaultSubject = '', tone = 'light' }) {
       </div>
 
       <button className="btn btn--primary contact-form__submit" type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? t('form.sending') : t('form.send')}
+        {status === 'sending' ? t('form.sending') : t('form.submit')}
         <ArrowRight />
       </button>
 

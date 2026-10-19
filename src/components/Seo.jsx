@@ -1,6 +1,6 @@
 // React 19 hoists <title>, <meta> and <link> rendered anywhere into <head>.
 export default function Seo({ title, description, path = '/' }) {
-  const fullTitle = title ? `${title} | Zyntex` : 'Zyntex | Apparel Manufacturing & Integrated Systems';
+  const fullTitle = title ? `${title} | Zyntex` : 'Zyntex | Apparel Manufacturing';
   const url = `https://zyntex.in${path}`;
   return (
     <>

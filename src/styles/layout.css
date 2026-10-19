@@ -1,30 +1,23 @@
 /* ---------- Logo ---------- */
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
+  width: auto;
+  height: 38px;
+  user-select: none;
 }
-.logo__mark {
-  width: 40px;
-  height: 40px;
-  flex: none;
-  transition: transform 0.6s var(--ease);
+.header.is-scrolled .logo {
+  height: 32px;
 }
-a:hover .logo__mark {
-  transform: rotateY(180deg);
+.header .logo {
+  transition: height 0.4s var(--ease);
 }
-.logo__word {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.32rem;
-  letter-spacing: 0.24em;
-  line-height: 1;
+.footer .logo {
+  height: 44px;
 }
-.logo--dark .logo__word {
-  color: var(--ink);
-}
-.logo--light .logo__word {
-  color: #fff;
+@media (max-width: 420px) {
+  .header .logo {
+    height: 30px;
+  }
 }
 
 /* ---------- Header ---------- */
@@ -57,6 +50,10 @@ a:hover .logo__mark {
   margin-inline-end: auto;
   position: relative;
   z-index: 2;
+  flex: none;
+}
+.nav {
+  margin-inline-start: auto;
 }
 .header__tools {
   display: flex;
@@ -194,8 +191,8 @@ a:hover .logo__mark {
   position: absolute;
   top: calc(100% + 10px);
   inset-inline-end: 0;
-  width: 220px;
-  max-height: min(420px, 70vh);
+  width: 250px;
+  max-height: min(460px, 70vh);
   overflow-y: auto;
   list-style: none;
   margin: 0;
@@ -217,10 +214,32 @@ a:hover .logo__mark {
   text-align: start;
   font-size: 0.95rem;
 }
-.lang__menu button small {
+.lang__name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.lang__name small {
   color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  font-weight: 400;
+}
+.lang__code {
+  flex: none;
+  min-width: 30px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: var(--mist);
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+.lang__menu button.is-active .lang__code {
+  background: var(--green-700);
+  color: #fff;
 }
 .lang__menu button:hover {
   background: var(--mist);
@@ -327,14 +346,6 @@ a:hover .logo__mark {
   }
 }
 @media (max-width: 420px) {
-  .logo__word {
-    font-size: 1.1rem;
-    letter-spacing: 0.18em;
-  }
-  .logo__mark {
-    width: 34px;
-    height: 34px;
-  }
   .lang__btn {
     padding: 0 10px;
   }
@@ -346,8 +357,8 @@ a:hover .logo__mark {
   overflow: hidden;
   background: var(--graphite);
   color: rgba(255, 255, 255, 0.72);
-  padding-top: clamp(64px, 8vw, 110px);
-  font-size: 0.95rem;
+  padding-top: clamp(56px, 7vw, 96px);
+  font-size: var(--fs-small);
 }
 .footer__glow {
   position: absolute;
@@ -361,12 +372,13 @@ a:hover .logo__mark {
 .footer__grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1.2fr 1.4fr;
-  gap: 48px;
+  grid-template-columns: 1.5fr 0.9fr 0.9fr 1.1fr 1.6fr;
+  gap: clamp(28px, 3.5vw, 56px);
 }
 .footer__brand p {
-  margin: 24px 0;
+  margin: 22px 0 20px;
   max-width: 300px;
+  line-height: 1.6;
 }
 .footer__brand strong {
   color: #fff;
@@ -375,8 +387,8 @@ a:hover .logo__mark {
 .footer__social {
   display: inline-grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
@@ -389,11 +401,11 @@ a:hover .logo__mark {
 }
 .footer__heading {
   font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--green-400);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 .footer__links,
 .footer__contact {
@@ -403,28 +415,54 @@ a:hover .logo__mark {
   display: grid;
   gap: 12px;
 }
+.footer__contact {
+  margin-top: 22px;
+  gap: 10px;
+}
 .footer__links a,
-.footer__contact a {
+.footer__contact a,
+.footer__social-link {
   transition: color 0.3s;
   overflow-wrap: anywhere;
 }
 .footer__links a:hover,
 .footer__contact a:hover,
-.footer__bottom a:hover {
+.footer__social-link:hover {
   color: #fff;
 }
 .footer__contact li {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  gap: 10px;
+  align-items: center;
 }
 .footer__contact svg {
   flex: none;
-  margin-top: 4px;
   color: var(--green-400);
+}
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer__social-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background 0.3s;
+}
+.footer__social-link:hover .footer__social-icon {
+  background: var(--green-600);
 }
 .footer__map .map {
   border-radius: 14px;
+}
+.footer__place {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
 }
 .footer__bottom {
   position: relative;
@@ -432,23 +470,28 @@ a:hover .logo__mark {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 64px;
-  padding-block: 28px;
+  padding-block: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 .footer__bottom p {
   margin: 0;
 }
 @media (max-width: 1100px) {
   .footer__grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+  .footer__map {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 600px) {
   .footer__grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 24px;
   }
 }
 
@@ -465,26 +508,16 @@ a:hover .logo__mark {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
-  perspective: 900px;
+  gap: 18px;
 }
 .intro__mark {
-  width: clamp(72px, 14vw, 104px);
-  height: auto;
-  filter: drop-shadow(0 20px 30px rgba(15, 92, 58, 0.3));
+  width: auto;
+  height: clamp(96px, 18vw, 150px);
+  filter: drop-shadow(0 18px 26px rgba(15, 92, 58, 0.18));
 }
 .intro__word {
-  display: flex;
-  overflow: hidden;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 7vw, 3.4rem);
-  letter-spacing: 0.32em;
-  margin-inline-end: -0.32em;
-  color: var(--ink);
-}
-.intro__word span {
-  display: inline-block;
+  width: auto;
+  height: clamp(34px, 6vw, 52px);
 }
 .intro__line {
   width: min(220px, 50vw);
@@ -492,4 +525,3 @@ a:hover .logo__mark {
   background: linear-gradient(90deg, transparent, var(--green-600), transparent);
   transform-origin: center;
 }
-

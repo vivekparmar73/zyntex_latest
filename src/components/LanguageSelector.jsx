@@ -5,10 +5,9 @@ import { languages } from '../i18n/translations';
 import { Chevron, GlobeIcon } from './Icons';
 
 export default function LanguageSelector({ inline = false }) {
-  const { lang, setLang, t } = useLanguage();
+  const { lang, option: current, setLang, t } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  const current = languages.find((l) => l.code === lang) || languages[0];
 
   useEffect(() => {
     if (!open) return undefined;
@@ -27,12 +26,11 @@ export default function LanguageSelector({ inline = false }) {
       <div className="lang-inline" role="group" aria-label={t('nav.language')}>
         {languages.map((l) => (
           <button
-            key={l.code}
+            key={l.id}
             type="button"
-            lang={l.code}
-            className={l.code === lang ? 'is-active' : ''}
-            aria-pressed={l.code === lang}
-            onClick={() => setLang(l.code)}
+            className={l.id === lang ? 'is-active' : ''}
+            aria-pressed={l.id === lang}
+            onClick={() => setLang(l.id)}
           >
             {l.label}
           </button>
@@ -68,20 +66,24 @@ export default function LanguageSelector({ inline = false }) {
             data-lenis-prevent
           >
             {languages.map((l) => (
-              <li key={l.code}>
+              <li key={l.id}>
                 <button
                   type="button"
                   role="option"
-                  lang={l.code}
-                  aria-selected={l.code === lang}
-                  className={l.code === lang ? 'is-active' : ''}
+                  aria-selected={l.id === lang}
+                  className={l.id === lang ? 'is-active' : ''}
                   onClick={() => {
-                    setLang(l.code);
+                    setLang(l.id);
                     setOpen(false);
                   }}
                 >
-                  <span>{l.label}</span>
-                  <small>{l.short}</small>
+                  <span className="lang__name">
+                    {l.label}
+                    {l.native !== l.label && (
+                      <small lang={l.lang}>{l.native}</small>
+                    )}
+                  </span>
+                  <span className="lang__code">{l.short}</span>
                 </button>
               </li>
             ))}

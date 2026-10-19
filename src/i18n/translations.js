@@ -1,18 +1,27 @@
+import { additions, it, tr, uk, da } from './translations-more';
+
 // Interface translations. Long-form marketing copy stays in English (the source language);
 // navigation, headings, labels, buttons and form text are translated.
 
+// Options shown in the selector, in the order requested. Country entries map to that country's language.
 export const languages = [
-  { code: 'en', label: 'English', short: 'EN' },
-  { code: 'hi', label: 'हिन्दी', short: 'HI' },
-  { code: 'gu', label: 'ગુજરાતી', short: 'GU' },
-  { code: 'fr', label: 'Français', short: 'FR' },
-  { code: 'es', label: 'Español', short: 'ES' },
-  { code: 'de', label: 'Deutsch', short: 'DE' },
-  { code: 'pt', label: 'Português', short: 'PT' },
-  { code: 'ru', label: 'Русский', short: 'RU' },
-  { code: 'ar', label: 'العربية', short: 'AR', dir: 'rtl' },
-  { code: 'zh', label: '中文', short: 'ZH' },
-  { code: 'ja', label: '日本語', short: 'JA' },
+  { id: 'en', label: 'English', native: 'English', lang: 'en', short: 'EN' },
+  { id: 'hi', label: 'Hindi', native: 'हिन्दी', lang: 'hi', short: 'HI' },
+  { id: 'fr', label: 'French', native: 'Français', lang: 'fr', short: 'FR' },
+  { id: 'ru', label: 'Russian', native: 'Русский', lang: 'ru', short: 'RU' },
+  { id: 'ja', label: 'Japanese', native: '日本語', lang: 'ja', short: 'JA' },
+  { id: 'ch', label: 'Switzerland', native: 'Deutsch (Schweiz)', lang: 'de-CH', dict: 'de', short: 'CH' },
+  { id: 'it', label: 'Italy', native: 'Italiano', lang: 'it', short: 'IT' },
+  { id: 'es', label: 'Spain', native: 'Español', lang: 'es', short: 'ES' },
+  { id: 'pt', label: 'Portugal', native: 'Português', lang: 'pt-PT', dict: 'pt', short: 'PT' },
+  { id: 'ae', label: 'United Arab Emirates', native: 'العربية', lang: 'ar-AE', dict: 'ar', short: 'AE', dir: 'rtl' },
+  { id: 'br', label: 'Brazil', native: 'Português (Brasil)', lang: 'pt-BR', dict: 'pt', short: 'BR' },
+  { id: 'sa', label: 'Saudi Arabia', native: 'العربية', lang: 'ar-SA', dict: 'ar', short: 'SA', dir: 'rtl' },
+  { id: 'tr', label: 'Turkey', native: 'Türkçe', lang: 'tr', short: 'TR' },
+  { id: 'mx', label: 'Mexico', native: 'Español (México)', lang: 'es-MX', dict: 'es', short: 'MX' },
+  { id: 'ua', label: 'Ukraine', native: 'Українська', lang: 'uk', dict: 'uk', short: 'UA' },
+  { id: 'dk', label: 'Denmark', native: 'Dansk', lang: 'da', dict: 'da', short: 'DK' },
+  { id: 'de', label: 'Germany', native: 'Deutsch', lang: 'de', short: 'DE' },
 ];
 
 const en = {
@@ -138,44 +147,6 @@ const hi = {
   'form.s_partnership': 'साझेदारी', 'form.s_careers': 'करियर', 'form.s_it': 'इंटीग्रेटेड सिस्टम्स / आईटी',
   'footer.brandOf': 'ज़ायनटेक्स एक ब्रांड है', 'footer.explore': 'देखें', 'footer.reach': 'संपर्क करें',
   'footer.rights': 'सर्वाधिकार सुरक्षित।', 'footer.visit': 'हमसे मिलें',
-};
-
-const gu = {
-  'nav.whoWeAre': 'અમે કોણ છીએ', 'nav.whatWeDo': 'અમે શું કરીએ છીએ', 'nav.contact': 'સંપર્ક',
-  'nav.aboutUs': 'અમારા વિશે', 'nav.leadership': 'નેતૃત્વ', 'nav.ourJourney': 'અમારી સફર',
-  'nav.design': 'ડિઝાઇન', 'nav.ourProducts': 'અમારા ઉત્પાદનો', 'nav.products': 'ઉત્પાદનો',
-  'nav.manufacturing': 'ઉત્પાદન', 'nav.opex': 'કાર્યકારી શ્રેષ્ઠતા', 'nav.divisions': 'બધા વિભાગો',
-  'nav.menu': 'મેનુ', 'nav.close': 'બંધ કરો', 'nav.language': 'ભાષા', 'nav.skip': 'સામગ્રી પર જાઓ',
-  'division.choose': 'વિભાગ પસંદ કરો', 'division.apparel': 'ઝાયન્ટેક્સ એપેરલ',
-  'division.apparelTag': 'ફેશનની દુનિયામાં પરિવર્તન', 'division.it': 'ઇન્ટિગ્રેટેડ સિસ્ટમ્સ',
-  'division.itTag': 'વિચારોને વાસ્તવિકતામાં', 'division.explore': 'જુઓ',
-  'home.keyStrengths': 'મુખ્ય ક્ષમતાઓ અને ઉકેલો', 'home.scroll': 'સ્ક્રોલ કરો',
-  'stats.countries': 'દેશો', 'stats.annually': 'વાર્ષિક',
-  'about.vision': 'અમારી દ્રષ્ટિ', 'about.mission': 'અમારું મિશન', 'about.pillars': 'અમારી સફળતાના સ્તંભો',
-  'about.strongDesign': 'મજબૂત ડિઝાઇન', 'about.inHouse': 'ઇન-હાઉસ ડિઝાઇન',
-  'about.multiProduct': 'બહુ-ઉત્પાદન ઓફરિંગ', 'about.oneStop': 'બહુ-ઉત્પાદન ઉકેલો માટે એક જ સ્થળ',
-  'about.opexDesc': 'વ્યવસ્થિત પ્રક્રિયાઓ દ્વારા સમયસર વચન પાલન',
-  'common.readMore': 'વધુ વાંચો', 'common.learnMore': 'વધુ જાણો', 'common.backToDivisions': 'વિભાગો પર પાછા',
-  'common.contactUs': 'સંપર્ક કરો',
-  'opex.p1': 'તથ્યાત્મક આંતરદૃષ્ટિ', 'opex.p2': 'અનુકૂળ ઉકેલો', 'opex.p3': 'વિશ્વસનીય માળખાકીય સુવિધા',
-  'opex.p4': 'કુશળ ટીમ', 'opex.p5': 'કામગીરી વ્યવસ્થાપન', 'opex.p6': 'સમયસર ડિલિવરી', 'opex.pillarsTitle': 'છ સ્તંભો',
-  'products.gallery': 'ઉત્પાદન ગેલેરી', 'products.categories': 'અમે બનાવીએ છીએ તે શ્રેણીઓ',
-  'products.all': 'બધા', 'products.talk': 'અમારી ટીમ સાથે વાત કરો', 'products.drag': 'ફેરવવા માટે ખેંચો',
-  'leadership.roleTbc': 'હોદ્દો નક્કી થવાનો બાકી',
-  'contact.getInTouch': 'સંપર્કમાં રહો', 'contact.email': 'ઇમેઇલ', 'contact.phone': 'ફોન',
-  'contact.linkedin': 'લિંક્ડઇન', 'contact.location': 'સ્થાન', 'contact.openMap': 'નકશામાં ખોલો',
-  'contact.sendMessage': 'અમને સંદેશ મોકલો',
-  'form.name': 'નામ', 'form.company': 'કંપની', 'form.email': 'કાર્ય ઇમેઇલ', 'form.phone': 'ફોન નંબર',
-  'form.optional': 'વૈકલ્પિક', 'form.subject': 'પૂછપરછનો પ્રકાર', 'form.message': 'સંદેશ',
-  'form.send': 'સંદેશ મોકલો', 'form.sending': 'મોકલી રહ્યા છીએ…',
-  'form.success': 'આભાર — તમારો સંદેશ મોકલાઈ ગયો છે. અમારી ટીમ ટૂંક સમયમાં સંપર્ક કરશે.',
-  'form.error': 'માફ કરશો, સંદેશ મોકલી શકાયો નથી. કૃપા કરી ફરી પ્રયાસ કરો અથવા સીધો ઇમેઇલ કરો.',
-  'form.required': 'આ ફીલ્ડ જરૂરી છે.', 'form.invalidEmail': 'કૃપા કરી માન્ય ઇમેઇલ સરનામું દાખલ કરો.',
-  'form.invalidPhone': 'કૃપા કરી માન્ય ફોન નંબર દાખલ કરો.', 'form.choose': 'વિકલ્પ પસંદ કરો',
-  'form.s_general': 'સામાન્ય પૂછપરછ', 'form.s_sampling': 'ડિઝાઇન અને સેમ્પલિંગ', 'form.s_bulk': 'બલ્ક ઉત્પાદન',
-  'form.s_partnership': 'ભાગીદારી', 'form.s_careers': 'કારકિર્દી', 'form.s_it': 'ઇન્ટિગ્રેટેડ સિસ્ટમ્સ / IT',
-  'footer.brandOf': 'ઝાયન્ટેક્સ આની બ્રાન્ડ છે:', 'footer.explore': 'જુઓ', 'footer.reach': 'સંપર્ક',
-  'footer.rights': 'સર્વાધિકાર સુરક્ષિત.', 'footer.visit': 'અમારી મુલાકાત લો',
 };
 
 const fr = {
@@ -406,44 +377,6 @@ const ar = {
   'footer.rights': 'جميع الحقوق محفوظة.', 'footer.visit': 'زورونا',
 };
 
-const zh = {
-  'nav.whoWeAre': '关于我们', 'nav.whatWeDo': '业务范围', 'nav.contact': '联系我们',
-  'nav.aboutUs': '公司简介', 'nav.leadership': '领导团队', 'nav.ourJourney': '发展历程',
-  'nav.design': '设计', 'nav.ourProducts': '我们的产品', 'nav.products': '产品',
-  'nav.manufacturing': '生产制造', 'nav.opex': '卓越运营', 'nav.divisions': '全部业务部门',
-  'nav.menu': '菜单', 'nav.close': '关闭', 'nav.language': '语言', 'nav.skip': '跳至内容',
-  'division.choose': '选择业务部门', 'division.apparel': 'Zyntex 服装',
-  'division.apparelTag': '变革时尚世界', 'division.it': '集成系统',
-  'division.itTag': '让创意成为现实', 'division.explore': '探索',
-  'home.keyStrengths': '核心优势与解决方案', 'home.scroll': '向下滚动',
-  'stats.countries': '个国家', 'stats.annually': '每年',
-  'about.vision': '我们的愿景', 'about.mission': '我们的使命', 'about.pillars': '成功支柱',
-  'about.strongDesign': '强大设计', 'about.inHouse': '自主设计',
-  'about.multiProduct': '多品类产品', 'about.oneStop': '多品类解决方案一站式服务',
-  'about.opexDesc': '以系统化流程准时兑现承诺',
-  'common.readMore': '阅读更多', 'common.learnMore': '了解更多', 'common.backToDivisions': '返回部门选择',
-  'common.contactUs': '联系我们',
-  'opex.p1': '事实洞察', 'opex.p2': '定制化解决方案', 'opex.p3': '可靠的基础设施',
-  'opex.p4': '专业团队', 'opex.p5': '绩效管理', 'opex.p6': '准时交付', 'opex.pillarsTitle': '六大支柱',
-  'products.gallery': '产品图库', 'products.categories': '我们生产的品类',
-  'products.all': '全部', 'products.talk': '与我们的团队沟通', 'products.drag': '拖动旋转',
-  'leadership.roleTbc': '职务待确认',
-  'contact.getInTouch': '联系方式', 'contact.email': '电子邮件', 'contact.phone': '电话',
-  'contact.linkedin': '领英', 'contact.location': '地址', 'contact.openMap': '在地图中打开',
-  'contact.sendMessage': '给我们留言',
-  'form.name': '姓名', 'form.company': '公司', 'form.email': '工作邮箱', 'form.phone': '电话号码',
-  'form.optional': '选填', 'form.subject': '咨询类型', 'form.message': '留言内容',
-  'form.send': '发送', 'form.sending': '发送中…',
-  'form.success': '谢谢！您的留言已发送，我们的团队会尽快与您联系。',
-  'form.error': '抱歉，留言发送失败。请重试或直接发送邮件给我们。',
-  'form.required': '此项为必填项。', 'form.invalidEmail': '请输入有效的邮箱地址。',
-  'form.invalidPhone': '请输入有效的电话号码。', 'form.choose': '请选择',
-  'form.s_general': '一般咨询', 'form.s_sampling': '设计与打样', 'form.s_bulk': '批量生产',
-  'form.s_partnership': '合作', 'form.s_careers': '招聘', 'form.s_it': '集成系统 / IT',
-  'footer.brandOf': 'Zyntex 是以下公司旗下品牌：', 'footer.explore': '浏览', 'footer.reach': '联系我们',
-  'footer.rights': '版权所有。', 'footer.visit': '来访地址',
-};
-
 const ja = {
   'nav.whoWeAre': '私たちについて', 'nav.whatWeDo': '事業内容', 'nav.contact': 'お問い合わせ',
   'nav.aboutUs': '会社概要', 'nav.leadership': '経営陣', 'nav.ourJourney': '沿革',
@@ -482,4 +415,20 @@ const ja = {
   'footer.rights': 'All rights reserved.', 'footer.visit': 'アクセス',
 };
 
-export const translations = { en, hi, gu, fr, es, de, pt, ru, ar, zh, ja };
+const merge = (base, code) => ({ ...base, ...additions[code] });
+
+export const translations = {
+  en: merge(en, 'en'),
+  hi: merge(hi, 'hi'),
+  fr: merge(fr, 'fr'),
+  es: merge(es, 'es'),
+  de: merge(de, 'de'),
+  pt: merge(pt, 'pt'),
+  ru: merge(ru, 'ru'),
+  ar: merge(ar, 'ar'),
+  ja: merge(ja, 'ja'),
+  it,
+  tr,
+  uk,
+  da,
+};

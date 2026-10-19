@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import PageBanner from '../components/PageBanner';
-import { Img, Page, ParallaxImage, Reveal, SplitHeading, TiltCard } from '../components/Motion';
+import { Page, ParallaxImage, Reveal, SplitHeading } from '../components/Motion';
+import DesignCarousel from '../components/DesignCarousel';
 import { ArrowRight } from '../components/Icons';
 import { images } from '../assets/images';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -21,15 +22,9 @@ export default function Design() {
       />
       <PageBanner title={t('nav.design')} />
 
-      <section className="section--tight" aria-label="Design gallery">
-        <div className="container design-gallery">
-          {gallery.map((img, i) => (
-            <Reveal key={i} delay={(i % 2) * 0.12}>
-              <TiltCard className="design-gallery__item" max={5}>
-                <Img image={img} sizes="(max-width: 900px) 100vw, 50vw" />
-              </TiltCard>
-            </Reveal>
-          ))}
+      <section className="section--tight" aria-label="Design highlights">
+        <div className="container">
+          <DesignCarousel items={gallery} />
         </div>
       </section>
 

@@ -3,8 +3,24 @@ import { Link } from 'react-router-dom';
 import { SplitHeading } from './Motion';
 import { routes } from '../data/site';
 
-/** Large green title banner used at the top of inner Apparel pages. */
-export default function PageBanner({ title, crumb }) {
+/** Large green title banner used at the top of inner pages. `solid` gives the plain centred variant. */
+export default function PageBanner({ title, crumb, solid = false }) {
+  if (solid) {
+    return (
+      <>
+        <section className="banner banner--solid">
+          <div className="container">
+            <SplitHeading as="h1" className="banner__title" text={title} immediate delay={0.1} />
+          </div>
+        </section>
+        <nav className="container crumbs" aria-label="Breadcrumb">
+          <Link to={routes.home}>Home</Link>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">{crumb || title}</span>
+        </nav>
+      </>
+    );
+  }
   return (
     <section className="banner">
       <svg className="banner__threads" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
@@ -26,7 +42,7 @@ export default function PageBanner({ title, crumb }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Link to={routes.apparel}>Zyntex Apparel</Link>
+          <Link to={routes.home}>Zyntex Apparel</Link>
           <span aria-hidden="true">/</span>
           <span aria-current="page">{crumb || title}</span>
         </motion.nav>
