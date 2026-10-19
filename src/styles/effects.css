@@ -87,9 +87,6 @@
   width: max-content;
   animation: marquee 38s linear infinite;
 }
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
-}
 .marquee__track > span {
   display: flex;
 }
@@ -106,8 +103,11 @@
   color: var(--ink);
 }
 .marquee__item:nth-child(2n) {
-  color: transparent;
-  -webkit-text-stroke: 1.2px var(--green-700);
+  font-family: var(--font-outline);
+  /* stroke painted under a background-coloured fill hides the font's internal overlap lines */
+  color: #fff;
+  -webkit-text-stroke: 2.4px var(--green-700);
+  paint-order: stroke fill;
 }
 .marquee__item i {
   font-style: normal;
@@ -131,7 +131,7 @@
   padding-top: 24px;
   overflow: hidden;
   text-align: center;
-  font-family: var(--font-display);
+  font-family: var(--font-outline);
   font-weight: 800;
   font-size: clamp(4rem, 19vw, 17rem);
   line-height: 0.82;

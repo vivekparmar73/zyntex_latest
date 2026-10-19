@@ -25,6 +25,8 @@
   --it-blue: #5aa7ff;
 
   --font-display: 'Montserrat Variable', 'Montserrat', 'Noto Sans', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
+  /* static font for outlined (stroked) text: the variable font's overlapping contours show through a stroke */
+  --font-outline: 'Montserrat', 'Montserrat Variable', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Inter Variable', 'Inter', 'Noto Sans', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
 
   /* Type scale — one place to tune sizes site-wide */
@@ -336,6 +338,11 @@ a:hover .link-arrow span {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+  /* the category strip is a slow, gentle scroll — keep it running */
+  .marquee__track {
+    animation-duration: 60s !important;
+    animation-iteration-count: infinite !important;
   }
 }
 

@@ -401,12 +401,13 @@
 .journey__year {
   display: block;
   margin-top: 20px;
-  font-family: var(--font-display);
+  font-family: var(--font-outline);
   font-size: clamp(3.4rem, 9vw, 7.5rem);
   font-weight: 800;
   line-height: 0.9;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--green-600);
+  color: var(--mist);
+  -webkit-text-stroke: 3px var(--green-600);
+  paint-order: stroke fill;
   opacity: 0.5;
 }
 .journey .link-arrow {

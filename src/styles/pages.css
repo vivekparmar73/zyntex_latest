@@ -405,7 +405,7 @@
   padding: clamp(30px, 3.4vw, 48px);
 }
 .success-card__num {
-  font-family: var(--font-display);
+  font-family: var(--font-outline);
   font-weight: 800;
   font-size: 3.4rem;
   line-height: 1;
@@ -967,7 +967,7 @@ a.contact__value:hover {
 }
 .not-found__code {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-outline);
   font-size: clamp(6rem, 22vw, 14rem);
   font-weight: 800;
   line-height: 1;

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import '@fontsource-variable/montserrat';
 import '@fontsource-variable/inter';
+import '@fontsource/montserrat/800.css';
 import './styles/global.css';
 import './styles/layout.css';
 import './styles/sections.css';
