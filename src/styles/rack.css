@@ -1,0 +1,142 @@
+/* ---------- Clothing rack (home) ---------- */
+.rack {
+  padding-block: clamp(48px, 7vw, 96px) clamp(36px, 5vw, 64px);
+  background: linear-gradient(180deg, #fff 0%, #f6f6f3 100%);
+  overflow: hidden;
+}
+.rack__head {
+  text-align: center;
+  margin-bottom: clamp(18px, 3vw, 34px);
+}
+.rack__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.rack__divider {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+}
+.rack__sub {
+  color: var(--muted);
+  font-weight: 600;
+}
+.rack__eyebrow span {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .rack__eyebrow {
+    gap: 10px;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+.rack__stage {
+  position: relative;
+  width: 100%;
+  min-height: 160px;
+  touch-action: pan-y; /* vertical scroll stays native; horizontal swipes move the garments */
+  user-select: none;
+}
+.rack__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #f4f6f7 0%, #b9c0c5 45%, #8b949a 60%, #d7dcdf 100%);
+  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+.rack__rail::before,
+.rack__rail::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  width: 14px;
+  height: 22px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #7f878d, #c9ced2, #7f878d);
+}
+.rack__rail::before {
+  left: 10px;
+}
+.rack__rail::after {
+  right: 10px;
+}
+
+.rack__item {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+.rack__item:active {
+  cursor: grabbing;
+}
+.rack__item:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: -8px;
+  border-radius: 12px;
+}
+.garment__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 14px rgba(17, 20, 23, 0.18));
+  transition: filter 0.4s var(--ease), transform 0.5s var(--ease);
+  transform-origin: 50% 0;
+}
+.rack__item.is-active .garment__img {
+  filter: drop-shadow(0 24px 20px rgba(15, 92, 58, 0.26));
+  transform: scale(1.04);
+}
+
+.rack__foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: clamp(8px, 2vw, 20px);
+  text-align: center;
+}
+.rack__name {
+  min-height: 46px;
+}
+.rack__name strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+.rack__name span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+.rack__name .rack__hint {
+  display: inline-block;
+  padding-top: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}

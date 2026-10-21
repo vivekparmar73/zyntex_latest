@@ -5,7 +5,7 @@ import { ArrowRight } from './Icons';
 import { contact } from '../data/site';
 
 const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || `https://formsubmit.co/ajax/${contact.email}`;
-const SUBJECTS = ['s_general', 's_apparel', 's_product', 's_partnership', 's_it', 's_other'];
+const SUBJECTS = ['s_general', 's_apparel', 's_product', 's_partnership', 's_other'];
 const EMPTY = { name: '', company: '', email: '', phone: '', subject: '', message: '', website: '' };
 
 function validate(v) {

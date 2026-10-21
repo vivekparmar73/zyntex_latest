@@ -5,10 +5,12 @@ export const contact = {
   phoneDisplay: '+91 78 630 24047',
   phoneHref: 'tel:+917863024047',
   linkedin: 'https://www.linkedin.com/company/zyntex/home/',
-  // TODO: Palsana town centre (OpenStreetMap). Replace with the exact facility coordinates once confirmed.
-  lat: 21.085941,
-  lng: 72.978046,
-  location: 'Palsana, Surat, Gujarat, India',
+  // Originally supplied coordinates — Kholvad / Kamrej area, matching the corporate office address
+  lat: 21.264903,
+  lng: 72.933053,
+  location: 'Kholvad, Kamrej, Surat, Gujarat, India',
+  address: 'Plot No. 17, Sidhivinayak Ind. Estate, Kholvad, Surat, Kamrej, Gujarat, India – 394190',
+  phoneOffice: '+91 78630 24047',
 };
 
 export const mapLinks = {

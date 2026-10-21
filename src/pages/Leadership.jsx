@@ -40,7 +40,6 @@ export default function Leadership() {
                   <div className="person__meta">
                     <h3>{person.name}</h3>
                     <p className="person__role">{person.role}</p>
-                    {person.tbc && <p className="person__tbc">{t('leadership.tbc')}</p>}
                   </div>
                 </TiltCard>
               </Reveal>

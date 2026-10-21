@@ -10,6 +10,7 @@ import './styles/layout.css';
 import './styles/sections.css';
 import './styles/pages.css';
 import './styles/effects.css';
+import './styles/rack.css';
 import App from './App';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { SmoothScrollProvider } from './components/SmoothScroll';

@@ -2,7 +2,8 @@
 // under /src/assets/images. Run with: npm run images
 // The originals in /resources are never modified.
 import sharp from 'sharp';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const SRC = path.resolve('resources');
@@ -80,6 +81,48 @@ async function run() {
       .toFile(path.join(OUT, 'products', `product-${String(i + 1).padStart(2, '0')}.webp`));
   }
   console.log('✓', tiles.length, 'product tiles');
+
+  await rackGarments();
+}
+
+// Rack garments: resources/racks/black/rackN.png (hangers already recoloured by
+// scripts/blacken-hangers.py). Each is trimmed, its hook tip located (the swing pivot),
+// and written with its measurements to src/assets/images/racks/meta.json.
+async function rackGarments() {
+  const src = path.join(SRC, 'racks', 'black');
+  const out = path.join(OUT, 'racks');
+  await mkdir(out, { recursive: true });
+  const files = (await readdir(src)).filter((f) => /^rack\d+\.png$/.test(f)).sort((a, b) => parseInt(a.slice(4)) - parseInt(b.slice(4)));
+  const meta = {};
+  const seen = new Map();
+  for (const file of files) {
+    const name = file.replace('.png', '');
+    const hash = createHash('md5').update(await readFile(path.join(src, file))).digest('hex');
+    if (seen.has(hash)) {
+      console.warn(`! ${file} is identical to ${seen.get(hash)} — skipped (replace it with the intended garment)`);
+      continue;
+    }
+    seen.set(hash, file);
+
+    const trimmed = await sharp(path.join(src, file)).trim({ threshold: 1 }).toBuffer({ resolveWithObject: true });
+    const { data, info } = await sharp(trimmed.data).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    // hook tip: centre of the opaque pixels in the first opaque row
+    let hookX = info.width / 2;
+    let hookY = 0;
+    for (let y = 0; y < info.height; y++) {
+      const xs = [];
+      for (let x = 0; x < info.width; x++) if (data[(y * info.width + x) * 4 + 3] > 100) xs.push(x);
+      if (xs.length) {
+        hookX = xs.reduce((a, b) => a + b, 0) / xs.length;
+        hookY = y;
+        break;
+      }
+    }
+    await sharp(trimmed.data).webp({ quality: 90, alphaQuality: 100, effort: 6 }).toFile(path.join(out, `${name}.webp`));
+    meta[name] = { w: info.width, h: info.height, hookX: Math.round(hookX * 10) / 10, hookY };
+    console.log('✓', file, `${info.width}×${info.height}`, 'hook', meta[name].hookX, hookY);
+  }
+  await writeFile(path.join(out, 'meta.json'), JSON.stringify(meta, null, 2));
 }
 
 run().catch((err) => {

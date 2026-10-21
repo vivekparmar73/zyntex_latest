@@ -395,9 +395,6 @@
 }
 
 /* ---------- Our journey (home) ---------- */
-.journey {
-  padding-bottom: 0;
-}
 .journey__year {
   display: block;
   margin-top: 20px;
@@ -413,15 +410,20 @@
 .journey .link-arrow {
   margin-top: 6px;
 }
-.journey__image {
-  margin-top: clamp(40px, 6vw, 80px);
-  border-radius: 0 !important;
-  aspect-ratio: 4320 / 1350;
+.journey {
+  padding-bottom: clamp(64px, 8vw, 120px);
 }
-@media (max-width: 700px) {
-  .journey__image {
-    aspect-ratio: 16 / 9;
-  }
+/* The full collage, never cropped: natural aspect ratio at every width */
+.journey__collage {
+  margin-top: clamp(40px, 6vw, 72px);
+  overflow: hidden;
+  border-radius: clamp(10px, 1.6vw, 20px);
+}
+.journey__collage img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4320 / 1350;
+  object-fit: contain;
 }
 
 /* ---------- Zyntex in numbers ---------- */

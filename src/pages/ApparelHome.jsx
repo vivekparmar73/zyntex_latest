@@ -2,13 +2,16 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import Seo from '../components/Seo';
+import ClothingRack from '../components/ClothingRack';
 import { CountUp, Img, Page, ParallaxImage, Reveal, SplitHeading, TiltCard } from '../components/Motion';
 import { ArrowRight, DesignIcon, ManufacturingIcon, OpexIcon, ProductsIcon } from '../components/Icons';
 import { images } from '../assets/images';
 import { useLanguage } from '../i18n/LanguageContext';
-import { productCategories, routes, stats, workforce } from '../data/site';
+import { routes, stats, workforce } from '../data/site';
 
 const ease = [0.22, 1, 0.36, 1];
+
+const MARQUEE = ['Knitwear', 'Undergarments', 'Accessories', 'Knits', 'Wovens', 'Denim', 'Outerwear', 'Activewear'];
 
 const strengths = [
   {
@@ -120,11 +123,11 @@ export default function ApparelHome() {
 
       <div className="marquee" aria-hidden="true">
         <div className="marquee__track">
-          {[0, 1].map((k) => (
+          {[0, 1, 2, 3].map((k) => (
             <span key={k}>
-              {productCategories.map((c) => (
-                <span key={c.id} className="marquee__item">
-                  {c.name}
+              {MARQUEE.map((name) => (
+                <span key={name} className="marquee__item">
+                  {name}
                   <i>✦</i>
                 </span>
               ))}
@@ -132,6 +135,8 @@ export default function ApparelHome() {
           ))}
         </div>
       </div>
+
+      <ClothingRack />
 
       {/* Key strengths */}
       <section className="section strengths" aria-labelledby="strengths-title">
@@ -189,7 +194,11 @@ export default function ApparelHome() {
             </Reveal>
           </div>
         </div>
-        <ParallaxImage image={images.main1} className="journey__image" sizes="100vw" strength={24} radius={0} />
+        <div className="container">
+          <Reveal className="journey__collage">
+            <Img image={images.main1} sizes="(max-width: 1440px) 100vw, 1440px" />
+          </Reveal>
+        </div>
       </section>
 
       {/* Zyntex in numbers */}

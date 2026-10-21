@@ -2,13 +2,18 @@ import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import PageBanner from '../components/PageBanner';
 import { Page, ParallaxImage, Reveal, SplitHeading } from '../components/Motion';
-import DesignCarousel from '../components/DesignCarousel';
+import DesignSlider from '../components/DesignSlider';
 import { ArrowRight } from '../components/Icons';
 import { images } from '../assets/images';
 import { useLanguage } from '../i18n/LanguageContext';
 import { routes } from '../data/site';
 
-const gallery = [images.design1, images.design2, images.design3, images.design4];
+const slides = [
+  { image: images.design1, title: 'Design and Product Development' },
+  { image: images.design2, title: 'Trend Forecasting' },
+  { image: images.design3, title: 'Global Market Intelligence' },
+  { image: images.design4, title: 'Best In-Class Talent' },
+];
 const tools = ['3D CAD rendering', '3D Optitex', 'CLO', 'Browzwear'];
 
 export default function Design() {
@@ -22,11 +27,7 @@ export default function Design() {
       />
       <PageBanner title={t('nav.design')} />
 
-      <section className="section--tight" aria-label="Design highlights">
-        <div className="container">
-          <DesignCarousel items={gallery} />
-        </div>
-      </section>
+      <DesignSlider slides={slides} />
 
       <section className="section design-intro" aria-labelledby="design-title">
         <div className="container split split--even">
