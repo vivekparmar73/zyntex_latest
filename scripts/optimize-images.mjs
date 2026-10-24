@@ -85,8 +85,8 @@ async function run() {
   await rackGarments();
 }
 
-// Rack garments: resources/racks/black/rackN.png (hangers already recoloured by
-// scripts/blacken-hangers.py). Each is trimmed, its hook tip located (the swing pivot),
+// Rack garments: resources/racks/black/rackN.png (prepared with black hangers by
+// scripts/prepare-rack.py). Each is trimmed, its hook tip located (the swing pivot),
 // and written with its measurements to src/assets/images/racks/meta.json.
 async function rackGarments() {
   const src = path.join(SRC, 'racks', 'black');

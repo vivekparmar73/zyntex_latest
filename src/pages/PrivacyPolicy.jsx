@@ -25,8 +25,8 @@ export default function PrivacyPolicy() {
 
           <h2>How your message is delivered</h2>
           <p>
-            Contact-form submissions are delivered to our inbox at {contact.email} through FormSubmit, an email-forwarding service. FormSubmit
-            processes the message only to deliver it to us.
+            Contact-form submissions are delivered to our inbox at {contact.email} through EmailJS, an email-delivery service, which may also
+            send you an automatic confirmation that we received your message. EmailJS processes the message only to deliver these emails.
           </p>
 
           <h2>Cookies and local storage</h2>

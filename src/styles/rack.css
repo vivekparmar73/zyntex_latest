@@ -140,3 +140,42 @@
   font-weight: 500;
   font-size: 0.9rem;
 }
+
+/* Phones/tablets: the rack is wider than the screen and slides sideways */
+.rack__track {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  will-change: transform;
+}
+.rack__stage.is-pannable {
+  overflow: hidden;
+  cursor: grab;
+}
+.rack__stage.is-pannable:active {
+  cursor: grabbing;
+}
+.rack__stage::before,
+.rack__stage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.rack__stage::before {
+  left: 0;
+  background: linear-gradient(90deg, #fbfbfa, rgba(251, 251, 250, 0));
+}
+.rack__stage::after {
+  right: 0;
+  background: linear-gradient(270deg, #fbfbfa, rgba(251, 251, 250, 0));
+}
+.rack__stage.is-pannable.show-start::before,
+.rack__stage.is-pannable.show-end::after {
+  opacity: 1;
+}

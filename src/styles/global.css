@@ -180,6 +180,16 @@ p:last-child {
   width: 34px;
   height: 2px;
   background: currentColor;
+  transform-origin: left center;
+  transition: transform 0.9s var(--ease) 0.25s;
+}
+/* inside a scroll reveal, the eyebrow line draws itself in */
+[data-reveal]:not(.is-inview) .eyebrow::before,
+[data-reveal]:not(.is-inview).eyebrow::before {
+  transform: scaleX(0);
+}
+[dir='rtl'] .eyebrow::before {
+  transform-origin: right center;
 }
 
 .title-xl,
@@ -229,7 +239,14 @@ p:last-child {
   text-transform: uppercase;
   overflow: hidden;
   isolation: isolate;
-  transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+  transition: color 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -14px rgba(15, 92, 58, 0.55);
+}
+.btn:active {
+  transform: translateY(0);
 }
 .btn::after {
   content: '';

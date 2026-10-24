@@ -402,9 +402,9 @@
   font-size: clamp(3.4rem, 9vw, 7.5rem);
   font-weight: 800;
   line-height: 0.9;
-  color: var(--mist);
-  -webkit-text-stroke: 3px var(--green-600);
-  paint-order: stroke fill;
+  /* line-art outline with the inner construction lines visible (matches the footer wordmark) */
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--green-600);
   opacity: 0.5;
 }
 .journey .link-arrow {

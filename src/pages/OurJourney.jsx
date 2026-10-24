@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Seo from '../components/Seo';
 import PageBanner from '../components/PageBanner';
-import { Page, ParallaxImage, Reveal, SplitHeading } from '../components/Motion';
+import { Img, Page, Reveal, SplitHeading } from '../components/Motion';
 import { images } from '../assets/images';
 import { useLanguage } from '../i18n/LanguageContext';
 import { routes, workforce } from '../data/site';
@@ -91,7 +91,13 @@ export default function OurJourney() {
         </div>
       </section>
 
-      <ParallaxImage image={images.main1} className="journey__image journey__image--page" sizes="100vw" strength={24} radius={0} />
+      <section className="section--tight journey-page__collage" aria-label="Zyntex apparel collection">
+        <div className="container">
+          <Reveal className="journey__collage">
+            <Img image={images.main1} sizes="(max-width: 1440px) 100vw, 1440px" />
+          </Reveal>
+        </div>
+      </section>
     </Page>
   );
 }

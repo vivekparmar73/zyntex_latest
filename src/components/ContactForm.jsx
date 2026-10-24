@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { ArrowRight } from './Icons';
 import { contact } from '../data/site';
+import { sendEnquiry } from '../lib/sendEnquiry';
 
-const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || `https://formsubmit.co/ajax/${contact.email}`;
 const SUBJECTS = ['s_general', 's_apparel', 's_product', 's_partnership', 's_other'];
 const EMPTY = { name: '', company: '', email: '', phone: '', subject: '', message: '', website: '' };
 
@@ -50,27 +50,12 @@ export default function ContactForm({ defaultSubject = '', tone = 'light' }) {
 
     setStatus('sending');
     try {
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: values.name.trim(),
-          company: values.company.trim(),
-          email: values.email.trim(),
-          phone: values.phone.trim() || '—',
-          inquiry: t(`form.${values.subject}`),
-          message: values.message.trim(),
-          _subject: `Zyntex website enquiry: ${t(`form.${values.subject}`)}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || data.success === false || data.success === 'false') throw new Error(data.message || res.statusText);
+      await sendEnquiry(values);
       setStatus('success');
       setValues({ ...EMPTY, subject: defaultSubject });
       setTouched({});
-    } catch {
+    } catch (err) {
+      console.error('Contact form:', err);
       setStatus('error');
     }
   };

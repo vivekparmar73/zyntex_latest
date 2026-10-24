@@ -34,7 +34,9 @@ Old URLs `/apparel/` and `/integrated-systems/` redirect to `/`.
 
 ## Contact form
 
-The form posts to `VITE_CONTACT_ENDPOINT` (see `.env.example`). It defaults to FormSubmit, which delivers to info@zyntex.in. The **first** submission triggers a one-time activation email to that inbox, and it must be confirmed before messages are delivered.
+The form sends email through EmailJS — see [`emailjs/README.md`](emailjs/README.md) for the one-time setup, the
+ready-made email templates and the four `VITE_EMAILJS_*` keys (in `.env.local` locally, and in the hosting
+provider's environment variables for the live site).
 
 ## Hosting
 

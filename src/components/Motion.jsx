@@ -2,17 +2,23 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 const ease = [0.22, 1, 0.36, 1];
+const easeSoft = [0.16, 1, 0.3, 1];
 
-/** Fades and lifts children into view once. */
-export function Reveal({ children, delay = 0, y = 40, as = 'div', className, ...rest }) {
+/**
+ * Fades, lifts and gently scales children into view once. Marks itself `.is-inview` so CSS
+ * details inside it (e.g. the eyebrow line) can animate in step.
+ */
+export function Reveal({ children, delay = 0, y = 44, as = 'div', className, ...rest }) {
   const Tag = motion[as];
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      data-reveal=""
+      initial={{ opacity: 0, y, scale: 0.985 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: '0px 0px -12% 0px' }}
-      transition={{ duration: 0.9, delay, ease }}
+      transition={{ duration: 1.05, delay, ease: easeSoft }}
+      onViewportEnter={(entry) => entry?.target?.classList.add('is-inview')}
       {...rest}
     >
       {children}
@@ -155,9 +161,10 @@ export function Page({ children, className }) {
     <motion.main
       id="main"
       className={className}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease }}
+      initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
+      // filter is cleared afterwards: a lingering filter would change how fixed elements position
+      animate={{ opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
+      transition={{ duration: 0.9, delay: 0.25, ease: easeSoft }}
     >
       {children}
     </motion.main>

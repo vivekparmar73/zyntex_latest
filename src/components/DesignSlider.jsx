@@ -13,8 +13,8 @@ const Arrow = ({ dir }) => (
 
 /**
  * Full-width design slider (Pearl Global style). Each slide image already carries the white
- * pointed title panel, so desktop shows it whole; phones show the photo area with the title
- * as live text underneath. Auto-advances every 4.5 s, pauses on hover, respects reduced motion.
+ * pointed title panel, so it is always shown whole at its own proportions on every screen.
+ * Auto-advances every 4.5 s, pauses on hover, respects reduced motion.
  */
 export default function DesignSlider({ slides }) {
   const reduce = useReducedMotion();
@@ -74,21 +74,6 @@ export default function DesignSlider({ slides }) {
         <button type="button" className="design-slider__arrow is-next" aria-label="Next slide" onClick={() => go(1)}>
           <Arrow dir="next" />
         </button>
-      </div>
-
-      {/* Phones: the title as readable text instead of the tiny baked-in panel */}
-      <div className="design-slider__caption" aria-live="polite">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.h2
-            key={index}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
-          >
-            {slide.title}
-          </motion.h2>
-        </AnimatePresence>
       </div>
 
       <div className="design-slider__dots" role="tablist" aria-label="Choose slide">

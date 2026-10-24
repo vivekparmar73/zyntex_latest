@@ -46,9 +46,6 @@
 .design-slider__arrow.is-next {
   right: clamp(10px, 1.6vw, 24px);
 }
-.design-slider__caption {
-  display: none;
-}
 .design-slider__dots {
   display: flex;
   justify-content: center;
@@ -66,28 +63,19 @@
   width: 26px;
   background: var(--green-600);
 }
-/* Phones: photo area only, with the title as readable text below */
+/* Phones: the whole slide stays visible; smaller controls keep the artwork clear */
 @media (max-width: 700px) {
-  .design-slider__viewport {
-    aspect-ratio: 16 / 11;
-  }
-  .design-slider__slide img {
-    object-position: 0% 50%;
-  }
-  .design-slider__caption {
-    display: block;
-    padding: 18px var(--gutter) 0;
-    text-align: center;
-  }
-  .design-slider__caption h2 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #1d2a6b;
-  }
   .design-slider__arrow {
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+  }
+  .design-slider__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  .design-slider__dots {
+    padding-top: 12px;
   }
 }
 
@@ -902,15 +890,11 @@ a.contact__value:hover {
     text-align: start;
   }
 }
-.journey__image--page {
-  margin-top: clamp(40px, 6vw, 80px);
-  border-radius: 0 !important;
-  aspect-ratio: 4320 / 1350;
+.journey-page__collage {
+  padding-top: 0;
 }
-@media (max-width: 700px) {
-  .journey__image--page {
-    aspect-ratio: 16 / 9;
-  }
+.journey-page__collage .journey__collage {
+  margin-top: 0;
 }
 
 /* ---------- About: spacing before the footer ---------- */

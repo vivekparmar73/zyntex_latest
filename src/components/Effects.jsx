@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import monogram from '../assets/images/brand/zyntex-monogram-white.webp';
 
-const ease = [0.76, 0, 0.24, 1];
+const ease = [0.83, 0, 0.17, 1];
 
 /**
  * Two-layer curtain rendered inside each route frame: it wipes up over the old page on exit
@@ -16,31 +16,43 @@ export function Curtain() {
         aria-hidden="true"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1, transition: { duration: 0.55, ease } }}
+        exit={{ scaleY: 1, transition: { duration: 0.5, ease } }}
       />
       <motion.div
         className="curtain curtain--out curtain--deep"
         aria-hidden="true"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1, transition: { duration: 0.55, delay: 0.08, ease } }}
+        exit={{ scaleY: 1, transition: { duration: 0.5, delay: 0.07, ease } }}
       >
-        <motion.img className="curtain__mark" src={monogram} alt="" initial={{ opacity: 0 }} exit={{ opacity: 1, transition: { delay: 0.3, duration: 0.25 } }} />
+        <motion.img
+          className="curtain__mark"
+          src={monogram}
+          alt=""
+          initial={{ opacity: 0, scale: 0.8 }}
+          exit={{ opacity: 1, scale: 1, transition: { delay: 0.28, duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
+        />
       </motion.div>
 
       <motion.div
         className="curtain curtain--in curtain--deep"
         aria-hidden="true"
         initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0, transition: { duration: 0.7, delay: 0.05, ease } }}
+        animate={{ scaleY: 0, transition: { duration: 0.75, delay: 0.1, ease } }}
       >
-        <motion.img className="curtain__mark" src={monogram} alt="" initial={{ opacity: 1 }} animate={{ opacity: 0, transition: { duration: 0.2 } }} />
+        <motion.img
+          className="curtain__mark"
+          src={monogram}
+          alt=""
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0, scale: 1.12, transition: { duration: 0.35 } }}
+        />
       </motion.div>
       <motion.div
         className="curtain curtain--in"
         aria-hidden="true"
         initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0, transition: { duration: 0.7, delay: 0.14, ease } }}
+        animate={{ scaleY: 0, transition: { duration: 0.75, delay: 0.18, ease } }}
       />
     </>
   );

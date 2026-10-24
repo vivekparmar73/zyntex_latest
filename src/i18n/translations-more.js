@@ -11,6 +11,7 @@ export const additions = {
     'footer.quickLinks': 'Quick Links',
     'footer.social': 'We Are Social',
     'rack.eyebrow': 'New Collection', 'rack.sub': 'Premium Apparel', 'rack.hint': 'Swipe across the rack or tap a garment',
+    'rack.hintPan': "Drag the rack sideways to see every piece",
     'footer.getInTouch': 'Get In Touch', 'footer.connect': 'Connect with Zyntex',
     'journey.since': 'Since 2021',
     'journey.storySoFar': 'The story so far',
@@ -38,6 +39,7 @@ export const additions = {
     'footer.quickLinks': 'त्वरित लिंक',
     'footer.social': 'हम सोशल मीडिया पर',
     'rack.eyebrow': 'नया कलेक्शन', 'rack.sub': 'प्रीमियम परिधान', 'rack.hint': 'रैक पर स्वाइप करें या किसी कपड़े को टैप करें',
+    'rack.hintPan': "सभी कपड़े देखने के लिए रैक को बगल में खींचें",
     'footer.getInTouch': 'संपर्क करें', 'footer.connect': 'ज़ायनटेक्स से जुड़ें',
     'journey.since': '2021 से',
     'journey.storySoFar': 'अब तक की कहानी',
@@ -65,6 +67,7 @@ export const additions = {
     'footer.quickLinks': 'Liens rapides',
     'footer.social': 'Suivez-nous',
     'rack.eyebrow': 'Nouvelle collection', 'rack.sub': 'Vêtements premium', 'rack.hint': 'Balayez le portant ou touchez un vêtement',
+    'rack.hintPan': "Faites glisser le portant pour voir chaque pièce",
     'footer.getInTouch': 'Nous contacter', 'footer.connect': 'Contactez Zyntex',
     'journey.since': 'Depuis 2021',
     'journey.storySoFar': "L'histoire jusqu'ici",
@@ -92,6 +95,7 @@ export const additions = {
     'footer.quickLinks': 'Enlaces rápidos',
     'footer.social': 'Síguenos',
     'rack.eyebrow': 'Nueva colección', 'rack.sub': 'Moda premium', 'rack.hint': 'Desliza por el perchero o toca una prenda',
+    'rack.hintPan': "Desliza el perchero para ver todas las prendas",
     'footer.getInTouch': 'Contacto', 'footer.connect': 'Conecta con Zyntex',
     'journey.since': 'Desde 2021',
     'journey.storySoFar': 'Nuestra historia hasta hoy',
@@ -119,6 +123,7 @@ export const additions = {
     'footer.quickLinks': 'Schnellzugriff',
     'footer.social': 'Folgen Sie uns',
     'rack.eyebrow': 'Neue Kollektion', 'rack.sub': 'Premium-Bekleidung', 'rack.hint': 'Über die Stange wischen oder ein Teil antippen',
+    'rack.hintPan': "Ziehen Sie die Stange zur Seite, um alle Teile zu sehen",
     'footer.getInTouch': 'Kontakt aufnehmen', 'footer.connect': 'Mit Zyntex in Kontakt treten',
     'journey.since': 'Seit 2021',
     'journey.storySoFar': 'Unsere Geschichte bisher',
@@ -146,6 +151,7 @@ export const additions = {
     'footer.quickLinks': 'Links rápidos',
     'footer.social': 'Siga-nos',
     'rack.eyebrow': 'Nova coleção', 'rack.sub': 'Vestuário premium', 'rack.hint': 'Deslize pela arara ou toque numa peça',
+    'rack.hintPan': "Arraste a arara para ver todas as peças",
     'footer.getInTouch': 'Fale connosco', 'footer.connect': 'Contacte a Zyntex',
     'journey.since': 'Desde 2021',
     'journey.storySoFar': 'A nossa história até agora',
@@ -173,6 +179,7 @@ export const additions = {
     'footer.quickLinks': 'Быстрые ссылки',
     'footer.social': 'Мы в соцсетях',
     'rack.eyebrow': 'Новая коллекция', 'rack.sub': 'Премиальная одежда', 'rack.hint': 'Проведите по вешалке или коснитесь изделия',
+    'rack.hintPan': "Сдвиньте вешалку в сторону, чтобы увидеть все вещи",
     'footer.getInTouch': "Зв'язатися", 'footer.connect': "Зв'язатися з Zyntex",
     'journey.since': 'С 2021 года',
     'journey.storySoFar': 'Наша история',
@@ -200,6 +207,7 @@ export const additions = {
     'footer.quickLinks': 'روابط سريعة',
     'footer.social': 'تابعونا',
     'rack.eyebrow': 'مجموعة جديدة', 'rack.sub': 'ملابس فاخرة', 'rack.hint': 'اسحب على الرف أو المس قطعة ملابس',
+    'rack.hintPan': "اسحب الرف جانبًا لرؤية كل القطع",
     'footer.getInTouch': 'تواصل معنا', 'footer.connect': 'تواصل مع زينتكس',
     'journey.since': 'منذ 2021',
     'journey.storySoFar': 'قصتنا حتى الآن',
@@ -227,6 +235,7 @@ export const additions = {
     'footer.quickLinks': 'クイックリンク',
     'footer.social': 'ソーシャル',
     'rack.eyebrow': 'ニューコレクション', 'rack.sub': 'プレミアムアパレル', 'rack.hint': 'ラックをスワイプするか、服をタップしてください',
+    'rack.hintPan': "ラックを横にドラッグしてすべてのアイテムを見る",
     'footer.getInTouch': 'お問い合わせ', 'footer.connect': 'Zyntex に問い合わせる',
     'journey.since': '2021年から',
     'journey.storySoFar': 'これまでの歩み',
@@ -281,6 +290,7 @@ export const it = {
   'footer.brandOf': 'Zyntex è un marchio di', 'footer.explore': 'Esplora', 'footer.quickLinks': 'Link rapidi',
   'footer.social': 'Seguici', 'footer.rights': 'Tutti i diritti riservati.', 'footer.visit': 'Vieni a trovarci',
     'rack.eyebrow': 'Nuova collezione', 'rack.sub': 'Abbigliamento premium', 'rack.hint': 'Scorri sullo stand o tocca un capo',
+    'rack.hintPan': "Trascina lo stand di lato per vedere tutti i capi",
     'footer.getInTouch': 'Contattaci', 'footer.connect': 'Contatta Zyntex',
 };
 
@@ -319,6 +329,7 @@ export const tr = {
   'footer.brandOf': 'Zyntex şu şirketin markasıdır:', 'footer.explore': 'Keşfet', 'footer.quickLinks': 'Hızlı bağlantılar',
   'footer.social': 'Bizi takip edin', 'footer.rights': 'Tüm hakları saklıdır.', 'footer.visit': 'Bizi ziyaret edin',
     'rack.eyebrow': 'Yeni koleksiyon', 'rack.sub': 'Premium giyim', 'rack.hint': 'Askılığı kaydırın veya bir ürüne dokunun',
+    'rack.hintPan': "Tüm ürünleri görmek için askılığı yana kaydırın",
     'footer.getInTouch': 'İletişime geçin', 'footer.connect': 'Zyntex ile iletişime geçin',
 };
 
@@ -357,6 +368,7 @@ export const uk = {
   'footer.brandOf': 'Zyntex — бренд компанії', 'footer.explore': 'Розділи', 'footer.quickLinks': 'Швидкі посилання',
   'footer.social': 'Ми в соцмережах', 'footer.rights': 'Усі права захищено.', 'footer.visit': 'Ми на карті',
     'rack.eyebrow': 'Нова колекція', 'rack.sub': 'Преміальний одяг', 'rack.hint': 'Проведіть по стійці або торкніться виробу',
+    'rack.hintPan': "Посуньте стійку вбік, щоб побачити всі речі",
     'footer.getInTouch': "Зв'язатися", 'footer.connect': "Зв'язатися з Zyntex",
 };
 
@@ -395,5 +407,6 @@ export const da = {
   'footer.brandOf': 'Zyntex er et brand under', 'footer.explore': 'Udforsk', 'footer.quickLinks': 'Genveje',
   'footer.social': 'Følg os', 'footer.rights': 'Alle rettigheder forbeholdes.', 'footer.visit': 'Besøg os',
     'rack.eyebrow': 'Ny kollektion', 'rack.sub': 'Premium beklædning', 'rack.hint': 'Stryg hen over stativet, eller tryk på et stykke tøj',
+    'rack.hintPan': "Træk stativet til siden for at se alle styk",
     'footer.getInTouch': 'Kontakt', 'footer.connect': 'Kontakt Zyntex',
 };

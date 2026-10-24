@@ -104,11 +104,10 @@
   color: var(--ink);
 }
 .marquee__item:nth-child(2n) {
+  /* line-art outline: the letters' inner construction lines (triangles) stay visible by design */
   font-family: var(--font-outline);
-  /* stroke painted under a background-coloured fill hides the font's internal overlap lines */
-  color: #fff;
-  -webkit-text-stroke: 2px var(--green-600);
-  paint-order: stroke fill;
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--green-600);
 }
 .marquee__item i {
   font-style: normal;
