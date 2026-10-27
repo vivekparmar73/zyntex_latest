@@ -25,8 +25,9 @@ export default function PrivacyPolicy() {
 
           <h2>How your message is delivered</h2>
           <p>
-            Contact-form submissions are delivered to our inbox at {contact.email} through EmailJS, an email-delivery service, which may also
-            send you an automatic confirmation that we received your message. EmailJS processes the message only to deliver these emails.
+            Contact-form submissions are delivered to the Zyntex team by email through an email-delivery service (EmailJS or FormSubmit),
+            which may also send you an automatic confirmation that we received your message. The service processes the message only to
+            deliver these emails.
           </p>
 
           <h2>Cookies and local storage</h2>

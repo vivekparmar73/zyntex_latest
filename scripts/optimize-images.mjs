@@ -82,6 +82,17 @@ async function run() {
   }
   console.log('✓', tiles.length, 'product tiles');
 
+  // MAIN IMAGE - 1 split at its central white gutter (x 2160–2172) into two halves,
+  // stacked on phones so the collage stays readable without cropping any photo.
+  for (const [suffix, left, width] of [['a', 0, 2160], ['b', 2172, 2148]]) {
+    await sharp(path.join(SRC, 'MAIN IMAGE - 1.jpg'))
+      .extract({ left, top: 0, width, height: 1350 })
+      .resize({ width: 1200 })
+      .webp(webp)
+      .toFile(path.join(OUT, `main-image-1-${suffix}.webp`));
+  }
+  console.log('✓ main-image-1 halves');
+
   await rackGarments();
 }
 

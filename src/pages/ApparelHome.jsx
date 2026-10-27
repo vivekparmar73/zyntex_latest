@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import Seo from '../components/Seo';
+import JourneyCollage from '../components/JourneyCollage';
 import ClothingRack from '../components/ClothingRack';
 import { CountUp, Img, Page, ParallaxImage, Reveal, SplitHeading, TiltCard } from '../components/Motion';
 import { ArrowRight, DesignIcon, ManufacturingIcon, OpexIcon, ProductsIcon } from '../components/Icons';
@@ -195,9 +196,7 @@ export default function ApparelHome() {
           </div>
         </div>
         <div className="container">
-          <Reveal className="journey__collage">
-            <Img image={images.main1} sizes="(max-width: 1440px) 100vw, 1440px" />
-          </Reveal>
+          <JourneyCollage />
         </div>
       </section>
 

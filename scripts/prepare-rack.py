@@ -19,6 +19,10 @@ SRC = os.path.join('resources', 'racks')
 OUT = os.path.join(SRC, 'black')
 SHOULDER = 150  # target shoulder width in px (output)
 SS = 4  # supersampling for the drawn hanger
+# Garments where the hanger shows through (e.g. a strappy top hangs by its straps).
+# For every other garment the hanger body sits hidden inside — only the hook and the
+# hanger's neck show above the collar, as on a real rail.
+SHOW_FULL_HANGER = {'rack1.png'}
 
 
 def hsv(p):
@@ -124,7 +128,7 @@ def top_edge(alpha, x):
     return alpha.size[1]
 
 
-def add_hanger(garment):
+def add_hanger(garment, full=True):
     """Draws a black hanger behind a cut-out garment and returns the composite."""
     alpha = garment.getchannel('A')
     w, h = garment.size
@@ -139,6 +143,9 @@ def add_hanger(garment):
     ry = top_edge(alpha, min(w - 1, rx)) - span * 0.012
     neck_top = min(top_edge(alpha, int(cx + d)) for d in range(-int(span * 0.08), int(span * 0.08) + 1, 2))
     ny = min(neck_top, (ly + ry) / 2 - span * 0.1) - span * 0.035
+    if not full:
+        # hidden hanger: its neck rises just out of the collar at the centre back
+        ny = top_edge(alpha, int(cx)) - span * 0.03
     hook = span * 0.2  # hook height above the hanger's neck
 
     pad_top = int(max(0, -(ny - hook - span * 0.04)))
@@ -159,15 +166,19 @@ def add_hanger(garment):
         (S(lx + thick * 0.2), S(ly + oy + thick)),
         (S(lx - thick * 0.4), S(ly + oy)),
     ]
-    d.polygon(body, fill=(22, 22, 24, 255))
-    # rounded shoulder ends
-    for x, y in ((lx, ly), (rx, ry)):
-        r = thick * 0.55
-        d.ellipse([S(x - r), S(y + oy), S(x + r), S(y + oy + 2 * r)], fill=(22, 22, 24, 255))
-    # a soft highlight along the top edge of each arm
-    hl = (78, 80, 86, 255)
-    d.line([(S(cx), S(ny + oy + thick * 0.25)), (S(rx), S(ry + oy + thick * 0.2))], fill=hl, width=int(S(thick * 0.18)))
-    d.line([(S(cx), S(ny + oy + thick * 0.25)), (S(lx), S(ly + oy + thick * 0.2))], fill=hl, width=int(S(thick * 0.18)))
+    if full:
+        d.polygon(body, fill=(22, 22, 24, 255))
+        # rounded shoulder ends
+        for x, y in ((lx, ly), (rx, ry)):
+            r = thick * 0.55
+            d.ellipse([S(x - r), S(y + oy), S(x + r), S(y + oy + 2 * r)], fill=(22, 22, 24, 255))
+        # a soft highlight along the top edge of each arm
+        hl = (78, 80, 86, 255)
+        d.line([(S(cx), S(ny + oy + thick * 0.25)), (S(rx), S(ry + oy + thick * 0.2))], fill=hl, width=int(S(thick * 0.18)))
+        d.line([(S(cx), S(ny + oy + thick * 0.25)), (S(lx), S(ly + oy + thick * 0.2))], fill=hl, width=int(S(thick * 0.18)))
+    else:
+        # the top of the hanger's neck, disappearing into the collar
+        d.rounded_rectangle([S(cx - thick * 1.1), S(ny + oy - thick * 0.2), S(cx + thick * 1.1), S(ny + oy + thick * 2.2)], radius=S(thick * 0.5), fill=(22, 22, 24, 255))
 
     # metal hook: a stem then a curl to the left
     stem_top = ny - hook * 0.45
@@ -208,7 +219,7 @@ def process(name):
     if abs(scale - 1) > 0.02:
         im = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
     if not wood:
-        im = add_hanger(im)
+        im = add_hanger(im, full=name in SHOW_FULL_HANGER)
     im.save(os.path.join(OUT, name))
     return mode, im.size
 

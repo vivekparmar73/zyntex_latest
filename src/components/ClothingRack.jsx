@@ -7,11 +7,11 @@ import { routes } from '../data/site';
 import { rackGarments } from '../data/rack';
 
 // Physics tuning (seconds, radians, pixels)
-const GRAVITY = 38; // pendulum stiffness → ~1 Hz swing
-const SWING_DAMP = 1.9;
+const GRAVITY = 24; // pendulum stiffness → a slow, weighty ~1.3 s swing
+const SWING_DAMP = 1.5;
 const SLIDE_K = 26; // spring pulling each hanger back to its slot
 const SLIDE_DAMP = 7.5;
-const MAX_ANGLE = 0.65;
+const MAX_ANGLE = 0.42;
 const PAN_FRICTION = 3.2; // momentum decay of the sliding rack (per second)
 
 function useLayout(stageRef) {
@@ -176,9 +176,9 @@ export default function ClothingRack() {
           g.om += (-acc / 900) * dt; // inertia: sliding makes the garment swing back
         }
         // the rack moving under the hanger makes the garment lag behind and swing
-        if (panAcc) g.om += Math.max(-36, Math.min(36, panAcc / 200)) * dt * 9 * g.k;
+        if (panAcc) g.om += Math.max(-24, Math.min(24, panAcc / 260)) * dt * 7 * g.k;
         // pendulum + a soft idle breeze
-        const breeze = reduce ? 0 : 0.35 * Math.sin(tSec * 0.7 + g.phase);
+        const breeze = reduce ? 0 : 0.25 * Math.sin(tSec * 0.6 + g.phase);
         g.om += (-g.grav * Math.sin(g.th) - SWING_DAMP * g.om + breeze) * dt;
         g.th = Math.max(-MAX_ANGLE, Math.min(MAX_ANGLE, g.th + g.om * dt));
       });
@@ -276,11 +276,12 @@ export default function ClothingRack() {
       const i = hitTest(x, y);
       if (i >= 0) {
         const g = sim.current[i];
-        g.om += vx * 1.15;
-        g.v += vx * 260;
+        // a brush of the hand: a gentle push, not a flick
+        g.om += vx * 0.45;
+        g.v += vx * 110;
         // a lighter nudge for the neighbours you brush past
         [i - 1, i + 1].forEach((j) => {
-          if (sim.current[j] && Math.abs(x - (restX(j) + sim.current[j].off)) < layout.w * 0.6) sim.current[j].om += vx * 0.35;
+          if (sim.current[j] && Math.abs(x - (restX(j) + sim.current[j].off)) < layout.w * 0.6) sim.current[j].om += vx * 0.15;
         });
         highlight(i);
       }
@@ -311,7 +312,7 @@ export default function ClothingRack() {
     }
     if (i >= 0) {
       highlight(i);
-      sim.current[i].om += (x < restX(i) + sim.current[i].off ? 1 : -1) * 1.4;
+      sim.current[i].om += (x < restX(i) + sim.current[i].off ? 1 : -1) * 0.8;
     }
   };
 
@@ -322,7 +323,7 @@ export default function ClothingRack() {
       // a tap (no real movement) pushes the garment under the finger
       if (!d.moved && d.hit >= 0 && sim.current[d.hit]) {
         highlight(d.hit);
-        sim.current[d.hit].om += (pointer.current.x < restX(d.hit) + sim.current[d.hit].off ? 1 : -1) * 1.6;
+        sim.current[d.hit].om += (pointer.current.x < restX(d.hit) + sim.current[d.hit].off ? 1 : -1) * 0.9;
       }
       pan.current.drag = null;
     }
@@ -335,7 +336,7 @@ export default function ClothingRack() {
       const target = Math.max(0, Math.min(layout.maxPan, restX(i) - layout.width / 2));
       pan.current.v = (target - pan.current.x) * PAN_FRICTION;
     }
-    sim.current[i].om += 1.8;
+    sim.current[i].om += 1.0;
     highlight(i);
   };
 

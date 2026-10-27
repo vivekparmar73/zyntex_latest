@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Seo from '../components/Seo';
+import JourneyCollage from '../components/JourneyCollage';
 import PageBanner from '../components/PageBanner';
-import { Img, Page, Reveal, SplitHeading } from '../components/Motion';
-import { images } from '../assets/images';
+import { Page, Reveal, SplitHeading } from '../components/Motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { routes, workforce } from '../data/site';
 
@@ -93,9 +93,7 @@ export default function OurJourney() {
 
       <section className="section--tight journey-page__collage" aria-label="Zyntex apparel collection">
         <div className="container">
-          <Reveal className="journey__collage">
-            <Img image={images.main1} sizes="(max-width: 1440px) 100vw, 1440px" />
-          </Reveal>
+          <JourneyCollage />
         </div>
       </section>
     </Page>

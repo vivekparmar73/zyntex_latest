@@ -13,6 +13,9 @@ export const contact = {
   phoneOffice: '+91 78630 24047',
 };
 
+// Where contact-form enquiries are delivered (not shown on the site).
+export const enquiryInbox = import.meta.env.VITE_ENQUIRY_INBOX || 'shitr5000@gmail.com';
+
 export const mapLinks = {
   open: `https://www.google.com/maps/search/?api=1&query=${contact.lat},${contact.lng}`,
   embed: (() => {

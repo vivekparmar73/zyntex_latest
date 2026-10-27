@@ -416,14 +416,27 @@
 /* The full collage, never cropped: natural aspect ratio at every width */
 .journey__collage {
   margin-top: clamp(40px, 6vw, 72px);
-  overflow: hidden;
-  border-radius: clamp(10px, 1.6vw, 20px);
 }
+/* full image at its own proportions — square corners, nothing clipped */
 .journey__collage img {
+  display: block;
   width: 100%;
   height: auto;
+}
+.journey__collage-wide {
   aspect-ratio: 4320 / 1350;
-  object-fit: contain;
+}
+.journey__collage-stack {
+  display: none;
+}
+@media (max-width: 700px) {
+  .journey__collage .journey__collage-wide {
+    display: none;
+  }
+  .journey__collage-stack {
+    display: grid;
+    gap: 6px;
+  }
 }
 
 /* ---------- Zyntex in numbers ---------- */
